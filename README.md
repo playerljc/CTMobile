@@ -1,11 +1,14 @@
-ctmobile.js
-  CtMobie移动端开发框架(依赖jQuery)
-  1.支持AMD和CMD规范
-  2.支持WEB主体形和mulitview两种混合开发模式
-  3.WEB主体形支持三种model模式
-    mode1: 本地锚点模式(inline模式)
-            模板都在本地的一个html中进行预先定义
-    mode2:  Ajax加载模式
-            只有第一页的模板在html进行预先定义，其他页面的模板用Ajax动态加载
-    mode3: 混合模式
-            mode1和mode2混合进行
+<p>
+	<br />
+</p>
+<pre>ctmobile.js
+CtMobie<span style="font-family:'宋体';">移动端开发框架</span>(<span style="font-family:'宋体';">依赖</span>jQuery)
+1.<span style="font-family:'宋体';">支持</span>AMD<span style="font-family:'宋体';">和</span>CMD<span style="font-family:'宋体';">规范 </span></pre>
+<pre>2.<span style="font-family:'宋体';">支持</span>WEB<span style="font-family:'宋体';">主体形和</span>mulitview<span style="font-family:'宋体';">两种混合开发模式 </span></pre>
+<pre>3.WEB<span style="font-family:'宋体';">主体形支持三种</span>model<span style="font-family:'宋体';">模式 </span></pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;mode1: <span style="font-family:'宋体';">本地锚点模式</span>(inline<span style="font-family:'宋体';">模式</span>) <span style="font-family:'宋体';">模板都在本地的一个</span>html<span style="font-family:'宋体';">中进行预先定义 </span></pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;mode2:  Ajax<span style="font-family:'宋体';">加载模式 </span><span style="font-family:'宋体';"> 只有第一页的模板在</span>html<span style="font-family:'宋体';">进行预先定义，其他页面的模板用</span>Ajax<span style="font-family:'宋体';">动态加载 </span></pre>
+<pre>&nbsp;&nbsp;&nbsp;&nbsp;mode3: <span style="font-family:'宋体';">混合模式 </span><span style="font-family:'宋体';"> </span>mode1<span style="font-family:'宋体';">和</span>mode2<span style="font-family:'宋体';">混合进行</span></pre>
+<p>
+	<br />
+</p>
