@@ -1,0 +1,5 @@
+ct-data-mode="result" 或 ct-data-mode="singleInstanceResult" 如果在pageCreate中调用了setResult() 后点击浏览器的返回
+父页面也可以接到返回值
+
+ct-data-preload="true" 只扫描了初始化页面的a标签，如果是用Ajax加载的页面中也有<a ct-data-preload="true">没有进行预加载
+

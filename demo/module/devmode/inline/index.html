@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../../../adapter/css/page/src/page.css">
+    <link rel="stylesheet" type="text/css" href="../../../../adapter/css/page/themes/default/page.css">
+    <link rel="stylesheet" type="text/css" href="../../../../src/ctmobile.css">
+
+    <script src="../../../../adapter/jquery-2.2.0.min.js"></script>
+    <script src="../../../../adapter/tool.js"></script>
+    <script src="../../../../src/angular/directive/angulardirectivemanager.js"></script>
+    <script src="../../../../src/angular/filter/angularfiltermanager.js"></script>
+    <script src="../../../../src/angular/service/angularservicemanager.js"></script>
+    <script src="../../../../src/ctmobile.js"></script>
+    <script>
+        CtMobile.config({
+            supportAngular: false
+        });
+    </script>
+</head>
+<body>
+
+<div ct-data-role="page" id="index">
+    <header>
+        <p class="ct-header-title">index</p>
+    </header>
+    <div class="ct-content" style="top:3rem;bottom:0;">
+        <a href="#page1">跳转到page1页面</a>
+    </div>
+</div>
+
+<div ct-data-role="page" id="page1">
+    <header>
+        <a class="ct-back-icon" ct-data-rel="back"></a>
+
+        <p class="ct-header-title">page1</p>
+    </header>
+    <div class="ct-content" style="top:3rem;bottom:0;">
+        <a href="#page2">跳转到page2页面</a>
+    </div>
+</div>
+
+<div ct-data-role="page" id="page2">
+    <header>
+        <a class="ct-back-icon" ct-data-rel="back"></a>
+
+        <p class="ct-header-title">page2</p>
+    </header>
+    <div class="ct-content" style="top:3rem;bottom:0;">
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+header,
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    line-height: 3rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+}
+
+.ct-content {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    /*自定义*/
+    top: 4.7rem;
+    /*自定义*/
+    bottom: 3rem;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    overflow-scrolling: touch !important;
+    -webkit-overflow-scrolling: touch !important;
+    -moz-overflow-scrolling: touch !important;
+    -ms-overflow-scrolling: touch !important;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+/*工具栏标题*/
+.ct-header-title {
+    margin: 0 4rem /*!important*/;
+    text-align: center !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    word-break: break-all !important;
+    font-size: .9rem;
+    line-height: 3rem;
+}
+
+/*工具栏按钮*/
+.ct-back-icon,
+.ct-share-icon,
+.ct-function-icon,
+.ct-refresh-icon,
+.ct-search-icon,
+.ct-user-icon,
+.ct-home-icon,
+.ct-more-icon,
+.ct-setting-icon,
+.ct-add-icon,
+.ct-save-icon,
+.ct-edit-icon,
+.ct-view-icon {
+    width: 2rem !important;
+    height: 100% !important;
+}
