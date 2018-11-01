@@ -966,7 +966,7 @@
        */
       function isEnableAngular() {
         var index = this.getPageDOM().outerHTML.indexOf("ct-ng-controller");
-        if (index == -1) {
+        if (index === -1) {
           return false
         } else {
           return true;
@@ -1449,7 +1449,6 @@
          * hashchange的回调函数
          */
         function onHashchange() {
-          debugger
           // #page1_134567890232323?id=123_456
           var hash = w.location.hash;
           hashChange(hash);
@@ -1543,7 +1542,7 @@
            */
           else {
             //  如果刷新的是栈顶的页面
-            if (id == root.getLastPage().getId()) {
+            if (id === root.getLastPage().getId()) {
               return;
             } else {
               // 依次出栈
@@ -1812,9 +1811,9 @@
            * 存放各个文件的加载路径，及其加载完后的回调函数
            * @param group
            * {
-                 *    url:string
-                 *    callback:function(){}
-                 * }
+           *    url:string
+           *    callback:function(){}
+           * }
            * 文件都加载完后的回调函数
            * @param complete function(){}
            */
