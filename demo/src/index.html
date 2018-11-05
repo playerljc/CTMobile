@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <title>CtMobile</title>
+</head>
+
+<body>
+
+<!--index-->
+<div ct-data-role="page" id="index" opt="index">
+  <header>
+    <p class="ct-header-title">CtMobile Demo</p>
+  </header>
+  <div class="ct-content" style="top:3rem;bottom:0;">
+    <ul>
+      <li><a class="link" ct-pageId="devmode">开发模式</a></li>
+      <li><a class="link" ct-pageId="return">返回</a></li>
+      <li><a class="link" ct-pageId="startmode">启动模式</a></li>
+      <li><a class="link" ct-pageId="parameter">界面传递参数</a></li>
+      <li><a class="link" ct-pageId="transition">页面转场</a></li>
+      <li><a ct-pageId="borasdcast">广播</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<!--devmode_inline start-->
+<div ct-data-role="page" id="devmode_inline_page1" opt="devmode_inline_page1">
+  <header>
+    <a class="ct-back-icon" ct-data-rel="back"></a>
+    <p class="ct-header-title">about</p>
+  </header>
+  <div class="ct-content" style="top:3rem;bottom:0;">
+    <ul>
+      <li><a class="link" ct-pageId="devmode_inline_page2">devmode_inline_page2</a></li>
+    </ul>
+  </div>
+</div>
+
+<div ct-data-role="page" id="devmode_inline_page2" opt="devmode_inline_page2">
+  <header>
+    <a class="ct-back-icon" ct-data-rel="back"></a>
+    <p class="ct-header-title">about</p>
+  </header>
+  <div class="ct-content" style="top:3rem;bottom:0;">
+    <ul>
+      <li><a class="link" ct-pageId="devmode_inline_page1">devmode_inline_page1</a></li>
+    </ul>
+  </div>
+</div>
+<!--devmode_inline end-->
+
+<!--devmode_ajax_preload start-->
+<div ct-data-role="page" id="devmode_ajax_preload_init_page">
+  <header>
+    <a class="ct-back-icon" ct-data-rel="back"></a>
+    <p class="ct-header-title">devmode_ajax_preload_init_page</p>
+  </header>
+  <div class="ct-content" style="top:3rem;bottom:0;">
+    <ul>
+      <li><a class="link" ct-data-preload="true" ct-pageId="devmode_ajax_preload_init_page1">devmode_ajax_preload_init_page1</a>
+      </li>
+      <li><a class="link" ct-data-preload="true" ct-pageId="devmode_ajax_preload_init_page2">devmode_ajax_preload_init_page2</a>
+      </li>
+      <li><a class="link" ct-data-preload="true" ct-pageId="devmode_ajax_preload_init_page3">devmode_ajax_preload_init_page3</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!--devmode_ajax_preload end-->
+
+</div>
+</body>
+</html>

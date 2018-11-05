@@ -1,0 +1,207 @@
+@import "../../../node_modules/font-awesome/less/font-awesome.less";
+
+header,
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  line-height: 3rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+header {
+  top: 0;
+}
+
+footer {
+  bottom: 0;
+}
+
+.ct-content {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  /*自定义*/
+  top: 4.7rem;
+  /*自定义*/
+  bottom: 3rem;
+  overflow-x: hidden !important;
+  overflow-y: auto;
+  overflow-scrolling: touch !important;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/*工具栏标题*/
+.ct-header-title {
+  margin: 0 4rem /*!important*/;
+  text-align: center !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  word-break: break-all !important;
+  font-size: .9rem;
+  line-height: 3rem;
+}
+
+/*工具栏按钮*/
+.ct-back-icon,
+.ct-share-icon,
+.ct-function-icon,
+.ct-refresh-icon,
+.ct-search-icon,
+.ct-user-icon,
+.ct-home-icon,
+.ct-more-icon,
+.ct-setting-icon,
+.ct-add-icon,
+.ct-save-icon,
+.ct-edit-icon,
+.ct-view-icon {
+  width: 2rem !important;
+  height: 100% !important;
+}
+
+/*头部*/
+header {
+  background: #3e98f0 !important;
+}
+
+/*底部*/
+footer {
+  background: #3e98f0 !important;
+}
+
+/*头部标题*/
+.ct-header-title {
+  color: #FFFFFF !important;
+}
+
+/*返回按钮*/
+.ct-back-icon {
+  float: left;
+  background: url(../images/iconfont-fanhui.png) no-repeat center !important;
+  background-size: .8rem !important;
+}
+
+/*用户按钮*/
+.ct-user-icon {
+  float: left;
+  background: url(../images/iconfont-user.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*功能按钮*/
+.ct-function-icon {
+  float: left;
+  background: url(../images/iconfont-gongneng.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*主页按钮*/
+.ct-home-icon {
+  float: left;
+  background: url(../images/iconfont-zhuye.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*分享按钮*/
+.ct-share-icon {
+  float: right;
+  background: url(../images/iconfont-fenxiang.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*刷新按钮*/
+.ct-refresh-icon {
+  float: right;
+  background: url(../images/iconfont-shuaxin.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*搜索按钮*/
+.ct-search-icon {
+  float: right;
+  background: url(../images/iconfont-sousuo.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*更多*/
+.ct-more-icon {
+  float: right;
+  background: url(../images/iconfont-gengduo.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*设置*/
+.ct-setting-icon {
+  float: right;
+  background: url(../images/iconfont-shezhi.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*添加*/
+.ct-add-icon {
+  float: right;
+  background: url(../images/iconfont-tianjia.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*保存*/
+.ct-save-icon {
+  float: right;
+  background: url(../images/iconfont-baocun.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*编辑*/
+.ct-edit-icon {
+  float: right;
+  background: url(../images/iconfont-bianji.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+/*查看*/
+.ct-view-icon {
+  float: right;
+  background: url(../images/iconfont-chakan.png) no-repeat center !important;
+  background-size: 1.2rem 1.2rem !important;
+}
+
+div[ct-data-role='page'] {
+  > .ct-content {
+    > ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      > li {
+        padding: 0 10px;
+        > a {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: #000;
+          padding: 20px 25px;
+          word-break: break-word;
+        }
+
+        > a.link {
+          &:after {
+            content: '\f054';
+            font-family: FontAwesome;
+            color: #ccc;
+            font-size: 20px;
+          }
+        }
+      }
+
+      > li:not(:last-child) {
+        > a {
+          border-bottom: 1px solid #ccc;
+        }
+      }
+    }
+  }
+}

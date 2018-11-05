@@ -1,0 +1,22 @@
+{
+  "name": "ctmobile",
+  "version": "2.0.0",
+  "description": "一个移动端框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playerljc/CTMobile.git"
+  },
+  "author": "playerljc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/playerljc/CTMobile/issues"
+  },
+  "homepage": "https://github.com/playerljc/CTMobile#readme",
+  "devDependencies": {
+    "jquery": "^3.3.1"
+  }
+}
