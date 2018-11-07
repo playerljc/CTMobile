@@ -183,6 +183,56 @@ export default {
 	transition_mode: {
 		url: "/static/html/transition_mode.html",
 	},
+
+
+
+
+  transition_mode_slideleft: {
+    url: "/static/html/transition_mode_slideleft.html",
+  },
+  transition_mode_slideright: {
+    url: "/static/html/transition_mode_slideright.html",
+  },
+  transition_mode_slideup: {
+    url: "/static/html/transition_mode_slideup.html",
+  },
+  transition_mode_slidedown: {
+    url: "/static/html/transition_mode_slidedown.html",
+  },
+  transition_mode_wxslideleft: {
+    url: "/static/html/transition_mode_wxslideleft.html",
+  },
+  transition_mode_wxslideright: {
+    url: "/static/html/transition_mode_wxslideright.html",
+  },
+  transition_mode_wxslideup: {
+    url: "/static/html/transition_mode_wxslideup.html",
+  },
+  transition_mode_wxslidedown: {
+    url: "/static/html/transition_mode_wxslidedown.html",
+  },
+  transition_mode_pushslideleft: {
+    url: "/static/html/transition_mode_pushslideleft.html",
+  },
+
+  transition_mode_pushslideright: {
+    url: "/static/html/transition_mode_pushslideright.html",
+  },
+  transition_mode_pushslideup: {
+    url: "/static/html/transition_mode_pushslideup.html",
+  },
+  transition_mode_pushslidedow: {
+    url: "/static/html/transition_mode_pushslidedow.html",
+  },
+  transition_mode_material: {
+    url: "/static/html/transition_mode_material.html",
+  },
+
+
+
+
+
+
 	// commmon
 	common: {
 		url: "/static/html/common.html",
