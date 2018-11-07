@@ -6,9 +6,11 @@ export default class extends Page {
 	}
 
 	pageCreate() {
-		const $backJO = this.getPageJO().find(" .ct-back-icon");
+		const $backJO = this.getPageJO().find(" .goto");
 		$backJO.on("click", () => {
-			this.getCtMobile().back();
+			this.ctmobile.startPage("/static/html/common.html?pageId=common",{
+				reload: true,
+			});
 		});
 	}
 }

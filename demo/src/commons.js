@@ -1,2 +1,2 @@
-import 'lodash';
-import 'jquery';
+import "lodash";
+import "jquery";

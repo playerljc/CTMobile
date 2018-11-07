@@ -3,9 +3,9 @@
  * index.js
  */
 
-import CtMobileFactory from './CtMobile';
-import Page from './Page';
+import CtMobileFactory from "./CtMobile";
+import Page from "./Page";
 
-import './index.less';
+import "./index.less";
 
 export {CtMobileFactory, Page};
