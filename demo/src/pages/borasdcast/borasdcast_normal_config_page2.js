@@ -1,0 +1,24 @@
+import {Page} from "ctmobile/index";
+
+export default class extends Page {
+  constructor(ctmobile, id) {
+    super(ctmobile, id);
+  }
+
+  pageCreate() {
+    this.getPageJO().find(' .trigger').on('click', () => {
+      this.ctmobile.sendBroadcast({
+        action: 'borasdcast_normal_config',
+        categorys: [],
+        bundle: {
+          a: 3,
+          b: 4
+        }
+      });
+    });
+  }
+
+  pageReceiver(intent) {
+    alert(JSON.stringify(intent));
+  }
+}

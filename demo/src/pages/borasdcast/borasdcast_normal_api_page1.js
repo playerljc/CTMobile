@@ -1,0 +1,34 @@
+import {Page} from "ctmobile/index";
+
+export default class extends Page {
+  constructor(ctmobile, id) {
+    super(ctmobile, id);
+  }
+
+  onRegisterReceiver(intent) {
+    alert(JSON.stringify(intent));
+  }
+
+  pageCreate() {
+    this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
+
+    // 注册borasdcast
+    this.ctmobile.registerReceiver({
+      el: this.getPageDOM(),
+      action: 'borasdcast_normal_api',
+      priority: 0,
+      categorys: []
+    }, this.onRegisterReceiver,);
+
+    this.getPageJO().find(' .trigger').on('click', () => {
+      this.ctmobile.sendBroadcast({
+        action: 'borasdcast_normal_api',
+        categorys: [],
+        bundle: {
+          a: 1,
+          b: 2
+        }
+      });
+    });
+  }
+}
