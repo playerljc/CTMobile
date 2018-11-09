@@ -1,4 +1,4 @@
-/**
+/***
  * Created by lzq on 2018/11/02.
  * CtMobile.js
  * CtMobie移动端开发框架(依赖jQuery)
@@ -18,7 +18,9 @@ import BorasdCast from "./BorasdCast";
 
 /**
  * 根据模板pageId获取模板的DOM对象
- * @param pageId
+ * @access private
+ * @param {string} pageId
+ * @return  {HtmlElement}
  */
 function getTemplateDOMById(pageId) {
   if (pageId.indexOf("?") !== -1) {
@@ -29,8 +31,10 @@ function getTemplateDOMById(pageId) {
 
 /**
  * 获取模板的属性
- * @param pageId
- * @param attr
+ * @access private
+ * @param {string} pageId
+ * @param {string} attr
+ * @return {Object}
  */
 function getTemplateConfig(pageId, attr) {
   const dom = getTemplateDOMById.call(this, pageId);
@@ -43,6 +47,9 @@ function getTemplateConfig(pageId, attr) {
 
 /**
  * 页面载入完成后,支持Promise
+ * @access private
+ * @callback
+ * @return {Promise}
  */
 function readyPromise() {
   return new Promise((resolve) => {
@@ -54,8 +61,9 @@ function readyPromise() {
 
 /**
  * DOM载入完成后，支持Promise
- * @returns {*}
- * @constructor
+ * @access private
+ * @callback
+ * @return {Promise}
  */
 function DOMContentLoadedPromise() {
   return new Promise((resolve) => {
@@ -67,6 +75,9 @@ function DOMContentLoadedPromise() {
 
 /**
  * cordova的设备载入完成后的回调函数,支持Promise
+ * @access private
+ * @callback
+ * @return {Promise}
  */
 function devicereadyPromise() {
   return new Promise((resolve) => {
@@ -78,8 +89,10 @@ function devicereadyPromise() {
 
 /**
  * 触发自定义的Html事件
- * @param dom 触发的HTML对象
- * @param htmlEvent 触发的事件
+ * @access private
+ * @param {HtmlElement} dom - 触发的HTML对象
+ * @param {string} type - 触发的事件
+ * @param {Array} params - 参数
  */
 function fireEvent(dom, type, params = []) {
   $(dom).trigger(type, params);
@@ -87,7 +100,10 @@ function fireEvent(dom, type, params = []) {
 
 /**
  * 预加载Ajax的页面
- * @constructor
+ * @access private
+ * @callback
+ * @param {HtmlElement} pageDOM
+ * @return {Promise}
  */
 function AjaxPreloadPromise(pageDOM) {
   const self = this;
@@ -95,7 +111,7 @@ function AjaxPreloadPromise(pageDOM) {
     let asyncTasks = [];
     console.time("预加载Ajax用时");
 
-    /**
+    /***
      * 查看是否有需要预加载的Ajax页面
      */
     $(pageDOM).find("a[ct-data-preload=true][ct-pageId]").each((index, aDom) => {
@@ -148,6 +164,7 @@ function AjaxPreloadPromise(pageDOM) {
  * {
  *   ct-data-role的值(id):outerHTML为值
  * }
+ * @access private
  */
 function initialLocalTemplatePromise() {
   const self = this;
@@ -155,14 +172,14 @@ function initialLocalTemplatePromise() {
   return new Promise((resolve, reject) => {
     console.time("初始化本地模板用时:");
 
-    /**
+    /***
      * 遍历所有含有ct-data-role="page"的元素并且删除
      */
     let ajaxPreloadPromiseTasks = [];
 
     $(this.bodyDOM).find("div[ct-data-role='page']").each(function () {
       self.templateDB[this.getAttribute("id")] = this.outerHTML;
-      /**
+      /***
        * Ajax预处理
        */
       ajaxPreloadPromiseTasks.push(AjaxPreloadPromise.call(self, this));
@@ -180,7 +197,9 @@ function initialLocalTemplatePromise() {
 
 /**
  * 预加载pageDom中所有要预加载的页面
- * @param pageDom
+ * @access private
+ * @param {HtmlElement} pageDom
+ * @return {Promise}
  */
 function preload(pageDom) {
   const self = this;
@@ -200,13 +219,15 @@ function preload(pageDom) {
 
 /**
  * 捕获a标签的事件
- * @constructor
+ * @access private
+ * @callback
+ * @return {Promise}
  */
 function LinkCapturePromise() {
   const self = this;
   return new Promise((resolve) => {
     console.time("捕获a标签用时:");
-    /**
+    /***
      * 初始化 link-capture events
      */
     window.document.addEventListener("click", function (e) {
@@ -250,7 +271,11 @@ function LinkCapturePromise() {
 
 /**
  * 创建实例
- * @returns {*}
+ * @access private
+ * @param {Function} Class
+ * @param {string} id
+ * @param {string} pageId
+ * @return {Page}
  */
 function newInstance({Class, id, pageId}) {
   const typeofName = (typeof Class).toLowerCase();
@@ -259,13 +284,13 @@ function newInstance({Class, id, pageId}) {
 
   let Constructor;
 
-  /**
+  /***
    * 如果Class可以实例化
    */
   if (typeofName === "function") {
     Constructor = Class;
   }
-  /**
+  /***
    * 如果Class不可以实例化则用缺省的Page进行实例化
    */
   else if (typeofName === "undefined") {
@@ -277,7 +302,7 @@ function newInstance({Class, id, pageId}) {
     return false;
   }
 
-  /**
+  /***
    * 如果是singleInstance 或 singleInstanceResult
    */
   if (ctDataMode.toLowerCase().indexOf("singleinstance") !== -1) {
@@ -292,7 +317,9 @@ function newInstance({Class, id, pageId}) {
 
 /**
  * 通过ID创建Page对象
- * @param id
+ * @access private
+ * @param {string} id
+ * @return {Promise}
  */
 function createPage(id) {
   return new Promise((resolve, reject) => {
@@ -330,27 +357,29 @@ function createPage(id) {
 
 /**
  * 页面载入完成的回调函数
+ * @access private
+ * @callback
  */
 function onReady() {
   const self = this;
 
-  /**
+  /***
    * 判断页面是否已经ready
    */
   if (this.hasInited) return;
   this.hasInited = true;
 
-  /**
+  /***
    * window.document.body的jQuery
    */
   this.bodyDOM = window.document.body;
 
-  /**
+  /***
    * 存放完全单例对象的容器
    */
   this.singleInstances = null;
 
-  /**
+  /***
    * 创建page切换时的遮罩层
    */
   this.maskDOM = $(
@@ -366,7 +395,7 @@ function onReady() {
   this.bodyDOM.appendChild(this.maskDOM);
 
 
-  /**
+  /***
    * initialLocalTemplate都完成后初始化第一页 and LinkCapture
    */
   Promise.all(
@@ -377,13 +406,13 @@ function onReady() {
   ).then(() => {
     console.timeEnd("总用时");
     fireEvent(window.document, "pageBeforeChange", [CtMobileFactory.getUrlParam(window.location.hash)]);
-    /**
+    /***
      * 初始化第一页
      * TODO:初始化第一页
      */
     createPage.call(this, this.getFirstId()).then((page) => {
       page.start(0, () => {
-          /**
+          /***
            * if(有hash值) 加载的不是首页而是某一个指定的页面 {
            *   调用startPage即可
            *   startPage需要三部分值
@@ -416,17 +445,18 @@ function onReady() {
 
 /**
  * initCtMobile
+ * @access private
  */
 function init() {
   const {supportCordova = false} = this.config;
 
   onReady = onReady.bind(this);
 
-  /**
+  /***
    * 如果开启了对cordova的支持
    */
   if (supportCordova) {
-    /**
+    /***
      * 如果开启了对cordova的支持，那么页面完成事件和cordova的deviceReady事件必须同时完成后才能支持后续代码
      */
     Promise.all([
@@ -441,12 +471,12 @@ function init() {
     });
   }
   else {
-    /**
+    /***
      * 页面载入完成事件
      */
     $(window.document).ready(onReady);
 
-    /**
+    /***
      * 自动 init
      */
     window.addEventListener("DOMContentLoaded", onReady);
@@ -455,20 +485,22 @@ function init() {
 
 /**
  * CtMobile
+ * @class
  */
 class CtMobile {
   /**
-   * @param config
+   * @constructor
+   * @param {Object} config -
    * config {
-       *   supportCordova: [true | false],是否支持cordova,默认为false
-       *   linkCaptureReload: [true | false],<a>标签加载页面是否改变浏览器历史,默认为true
-       *   router: Object {
-       *        id (ct-data-role="page"的id属性): Object{
-       *          url:String (页面的地址)
-       *          component: Function (返回一个Prmise)
-       *        }
-       *      }
-       *   }
+   *   supportCordova: [true | false],是否支持cordova,默认为false
+   *   linkCaptureReload: [true | false],<a>标签加载页面是否改变浏览器历史,默认为true
+   *   router: Object {
+   *        id (ct-data-role="page"的id属性): Object{
+   *          url:String (页面的地址)
+   *          component: Function (返回一个Prmise)
+   *        }
+   *      }
+   *   }
    */
   constructor(config) {
     this.config = config;
@@ -490,8 +522,8 @@ class CtMobile {
 
   /**
    * 页面跳转
-   * @param pageId (pageId = pageId + params) 如: page1?a=1&b=2;
-   * @param option {
+   * @param {string} pageId - (pageId = pageId + params) 如: page1?a=1&b=2;
+   * @param {Object} option {
    *   reload : [true | false]
    * }
    */
@@ -501,7 +533,8 @@ class CtMobile {
 
   /**
    * 通过ID创建Page对象
-   * @param id
+   * @param {string} id
+   * @return {Page}
    */
   createPage(id) {
     return createPage.call(this, id);
@@ -509,7 +542,8 @@ class CtMobile {
 
   /**
    * 预加载pageDom中所有要预加载的页面
-   * @param pageDom
+   * @param {HtmlElement} pageDom
+   * @return {Promise}
    */
   preload(pageDom) {
     return preload.call(this, pageDom);
@@ -524,6 +558,7 @@ class CtMobile {
 
   /**
    * 获取第一页真正的ID
+   * @return {string}
    */
   getFirstId() {
     return this.getId(this.getFirstPageId());
@@ -532,7 +567,8 @@ class CtMobile {
   /**
    * 根据模板page的ID获取真正page的ID
    * 注释:pageId_时间戳?parameters
-   * @param pageId
+   * @param {string} pageId
+   * @return {string}
    */
   getId(pageId) {
     let id = "";
@@ -549,6 +585,7 @@ class CtMobile {
   /**
    * 通过hash值获取pageId
    * 例子: "#info_1541214530597?id=1"
+   * @return {string}
    */
   getPageIdByHash() {
     let hash = window.location.hash;
@@ -564,7 +601,7 @@ class CtMobile {
 
   /**
    * 通过hash获取参数Parameter
-   * @return {*}
+   * @return {string}
    */
   getParameterByHash() {
     let hash = window.location.hash;
@@ -579,6 +616,7 @@ class CtMobile {
 
   /**
    * 获取第一个页面的pageId
+   * @return {string}
    */
   getFirstPageId() {
     let id;
@@ -591,8 +629,8 @@ class CtMobile {
 
   /**
    * 根据ID获取page对象
-   * @param id
-   * @return {*}
+   * @param {string} id
+   * @return {Page}
    */
   getPageById(id) {
     return this.router.getPageById(this.indexOfById(id));
@@ -600,8 +638,8 @@ class CtMobile {
 
   /**
    * 根据pageId获取单例对象
-   * @param pageId
-   * @return {*}
+   * @param {string} pageId
+   * @return {Page}
    */
   getSingleInstance(pageId) {
     if (!this.singleInstances) {
@@ -612,9 +650,9 @@ class CtMobile {
 
   /**
    * 触发一个自定义事件
-   * @param dom
-   * @param type
-   * @param params
+   * @param {HtmlElement} dom
+   * @param {string} type
+   * @param {Object} params
    */
   fireEvent(dom, type, params) {
     fireEvent(dom, type, params);
@@ -622,8 +660,9 @@ class CtMobile {
 
   /**
    * 获取模板的属性
-   * @param pageId
-   * @param attr
+   * @param {string} pageId
+   * @param {string} attr
+   * @return {Object}
    */
   getTemplateConfig(pageId, attr) {
     return getTemplateConfig.call(this, pageId, attr);
@@ -631,8 +670,8 @@ class CtMobile {
 
   /**
    * 根据索引获取page对象
-   * @param index
-   * @returns {*}
+   * @param {string} index
+   * @returns {Page}
    */
   getPageByIndex(index) {
     return this.router.getPageByIndex(index);
@@ -640,7 +679,7 @@ class CtMobile {
 
   /**
    * 根据id获取索引
-   * @param id
+   * @param {string} id
    * @returns {number}
    */
   indexOfById(id) {
@@ -656,6 +695,7 @@ class CtMobile {
 
   /**
    * 获取历史记录中的栈第一个元素
+   * @return {Page}
    */
   getFirstPage() {
     return this.router.getPageByIndex(0);
@@ -663,7 +703,7 @@ class CtMobile {
 
   /**
    * 获取历史记录中的栈顶的元素
-   * @returns {*}
+   * @returns {Page}
    */
   getLastPage() {
     return this.router.getLastPage();
@@ -671,6 +711,7 @@ class CtMobile {
 
   /**
    * 获取转场的参数
+   * @return {Object}
    */
   getParameter() {
     return this.router.getParameter();//$.extend({}, _parameter);
@@ -678,6 +719,7 @@ class CtMobile {
 
   /**
    * 获取历史栈长度
+   * @return {number}
    */
   getHistoryLength() {
     return this.router.getHistoryLength();
@@ -685,6 +727,8 @@ class CtMobile {
 
   /**
    * 获取父窗体的setRequest的值
+   * @param {Page} page
+   * @return {Object}
    */
   getRequest(page) {
     if (this.getHistoryLength() === 0 || this.getHistoryLength() === 1) {
@@ -701,14 +745,14 @@ class CtMobile {
 
   /**
    * 注册Receiver对象
-   * @params intentFilter [Object]
+   * @params {Object} intentFilter -
    * {
    *    el: HtmlElement
 	 *    action:[string] action
 	 *    priority:[number] 优先级
 	 *    categorys:[array] 分类
 	 * }
-   * @params handler [Function] receiver执行的handler
+   * @params {Function} handler - receiver执行的handler
    */
   registerReceiver(intentFilter, handler) {
     this.borasdcast.registerReceiver(intentFilter, handler);
@@ -716,8 +760,8 @@ class CtMobile {
 
   /**
    * 执行Receiver通过Id
-   * @param id
-   * @param jsonStr
+   * @param {string} id
+   * @param {string} jsonStr
    */
   executeReceiverById(id, jsonStr) {
     this.borasdcast.executeReceiverById(id, jsonStr);
@@ -725,7 +769,7 @@ class CtMobile {
 
   /**
    * 解除注册Receiver对象
-   * @params handler
+   * @params {Function} handler
    */
   unregisterReceiver(action, handler) {
     this.borasdcast.unregisterReceiver(action, handler);
@@ -733,6 +777,7 @@ class CtMobile {
 
   /**
    * 解除注册通过Page中的Dom
+   * @param {HtmlElement} el
    */
   unregisterReceiverByDom(el) {
     this.borasdcast.unregisterReceiverByDom(el);
@@ -740,7 +785,7 @@ class CtMobile {
 
   /**
    * 发送无序广播
-   * @param intent
+   * @param {Object} intent -
    * {
 	 *    action:[string] action
 	 *    categorys:[array] 分类
@@ -753,7 +798,7 @@ class CtMobile {
 
   /**
    * 发送有序广播
-   * @param intent
+   * @param {Object} intent -
    * {
 	 *    action:[string] action
 	 *    categorys:[array] 分类
@@ -768,14 +813,13 @@ class CtMobile {
 
 
 /**
- *
- * @type {{getUrlParam: (function(*=): {}), getParentElementByTag: (function(*, *=): *), create: (function(*=))}}
+ * @class
  */
 const CtMobileFactory = {
   /**
    * 将转场参数转换为对象
-   * @param url
-   * @return {{}}
+   * @param {string} url
+   * @return {Object}
    */
   getUrlParam(url) {
     const reg_url = /^[^\?]+\?([\w\W]+)$/,
@@ -792,10 +836,10 @@ const CtMobileFactory = {
     return ret;
   },
   /**
-   *
-   * @param el
-   * @param tag
-   * @return {*}
+   * getParentElementByTag
+   * @param {HtmlElement} el
+   * @param {string} tag
+   * @return {HtmlElement}
    */
   getParentElementByTag(el, tag) {
     if (!tag) return null;
@@ -818,7 +862,8 @@ const CtMobileFactory = {
   },
   /**
    * 根据Ajax返回值获取TemplateStr
-   * @param id
+   * @param {string} templateText
+   * @return {string}
    */
   getPageTemplateStrByAjaxStr(templateText) {
     let pageDom;
@@ -837,7 +882,8 @@ const CtMobileFactory = {
   },
   /**
    * 创建CtMobile
-   * @param config
+   * @param {object} config
+   * @return {CtMobile}
    */
   create(config) {
     return new CtMobile(config);

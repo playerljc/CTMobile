@@ -1,10 +1,11 @@
-/**
+/***
  * Created by lzq on 2018/11/02
  * BorasdCast.js
  */
 
 /**
  * 找到符合intent的receiver的集合
+ * @access private
  * @param intent
  */
 function getReceiverByIntent(intent) {
@@ -31,10 +32,20 @@ function getReceiverByIntent(intent) {
   return receivers;
 }
 
+/**
+ * BorasdCast 广播
+ * @class
+ */
 export default class {
+
+  /**
+   * BorasdCastConstructor
+   * @access public
+   * @constructor
+   */
   constructor() {
     Object.assign(this, {
-      /**
+      /***
        * Receiver Model 用来存储Receivers
        * {
        *   el: [HtmlElement] 页面的dom
@@ -49,9 +60,10 @@ export default class {
   }
 
   /**
-   * 执行Receiver通过Id
-   * @param id
-   * @param jsonStr
+   * 执行Receiver通过id
+   * @access public
+   * @param {string} id - id.
+   * @param {string} jsonStr - 参数
    */
   executeReceiverById(id, jsonStr) {
     for (let i = 0, len = this.receiverModel.length; i < len; i++) {
@@ -66,14 +78,15 @@ export default class {
 
   /**
    * 注册Receiver对象
-   * @params intentFilter [Object]
+   * @access public
+   * @params {Object} intentFilter  -
    * {
    *    el:HtmlElement
    *    action:[string] action
    *    priority:[number] 优先级
    *    categorys:[array] 分类
    * }
-   * @params handler [Function] receiver执行的handler
+   * @params {Function} handler - receiver执行的handler
    */
   registerReceiver(intentFilter, handler) {
     if (!handler || !intentFilter || !intentFilter.action || !intentFilter.el) return;
@@ -89,8 +102,9 @@ export default class {
 
   /**
    * 解除注册Receiver对象
-   * @param action
-   * @params handler
+   * @access public
+   * @param {string} action
+   * @params {Function} handler
    */
   unregisterReceiver(action, handler) {
     if (!action || !handler) return;
@@ -108,7 +122,8 @@ export default class {
 
   /**
    * 接触注册Receiver通过page中的Dom
-   * @param el
+   * @access public
+   * @param {HtmlElement} el
    */
   unregisterReceiverByDom(el) {
     if (!el) return;
@@ -126,11 +141,12 @@ export default class {
 
   /**
    * 发送无序广播
-   * @param intent
+   * @access public
+   * @param {Object} intent -
    * {
-   *    action:[string] action
-   *    categorys:[array] 分类
-   *    bundle:Object 参数
+   *    action:{string} action
+   *    categorys:{Array} 分类
+   *    bundle:{Object} 参数
    * }
    */
   sendBroadcast(intent) {
@@ -147,11 +163,12 @@ export default class {
 
   /**
    * 发送有序广播
-   * @param intent
+   * @access public
+   * @param {Object} intent -
    * {
-   *    action:[string] action
-   *    categorys:[array] 分类
-   *    bundle:Object 参数
+   *    action:{string} action
+   *    categorys:{Array} 分类
+   *    bundle:{Object} 参数
    * }
    */
   sendOrderedBroadcast(intent) {
@@ -167,7 +184,7 @@ export default class {
       let receivers = getReceiverByIntent.call(this, intent);
       receivers = [].concat(receivers);
 
-      /**
+      /***
        * 按照priority进行排序
        */
       receivers.sort(function (o1, o2) {
@@ -188,7 +205,8 @@ export default class {
 
     /**
      * 传递
-     * @param receivers
+     * @access private
+     * @param {Array} receivers
      */
     function transfer(receivers) {
       if (receivers.length === 0) return;
@@ -198,6 +216,7 @@ export default class {
         lock = true;
         receiver.handler(args, {
           /**
+           * @access private
            * 继续传递
            */
           next() {
@@ -209,7 +228,8 @@ export default class {
           },
           /**
            * 传递参数
-           * @param bundle
+           * @access private
+           * @param {Object} bundle
            */
           putExtras(bundle) {
             if (lock) {

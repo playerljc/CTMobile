@@ -1,4 +1,4 @@
-/**
+/***
  * Created by lzq on 2018/11/02
  * Router.js
  */
@@ -9,18 +9,19 @@ import Constant from "./Constant";
 
 /**
  * 初始化
+ * @access private
  */
 function initial() {
 	const self = this;
 
 	onHashchange = onHashchange.bind(this);
 
-	/**
+	/***
    * 注册hashchange事件
    */
 	window.addEventListener("hashchange", onHashchange, false);
 
-	/**
+	/***
    * 注册页面转场事件
    */
 	$(window.document).on("pageBeforeChange", function (e, params) {
@@ -30,6 +31,8 @@ function initial() {
 
 /**
  * hashchange的回调函数
+ * @access private
+ * @callback
  */
 function onHashchange() {
 	// #page1_134567890232323?id=123_456
@@ -39,14 +42,14 @@ function onHashchange() {
 
 /**
  * hashChange的处理
- * @param hash 哈希值
- * @param option {
+ * @param {string} hash - 哈希值
+ * @param {Object} option - {
  *  reload :[true | false]
  * }
  */
 function hashChange(hash, option) {
 	const self = this;
-	/**
+	/***
    * 转场的id(没有重复)
    * @type {string}
    */
@@ -58,14 +61,14 @@ function hashChange(hash, option) {
 			: hash.substring(1);
 
 		const index = id.lastIndexOf("_");
-		/**
+		/***
      * 用户自定义的锚点跳转
      */
 		if (index === -1) {
 			return false;
 		} else {
 			const pageId = id.substring(0, index);
-			/**
+			/***
        * 用户自定义的锚点跳转
        */
 			if (!window.document.querySelector("[ct-data-role='page'],#" + pageId)) {
@@ -74,7 +77,7 @@ function hashChange(hash, option) {
 			self.ctmobile.fireEvent(window.document, "pageBeforeChange", [CtMobileFactory.getUrlParam(hash)]);
 		}
 	}
-	/**
+	/***
    * 首页
    */
 	else {
@@ -100,7 +103,7 @@ function hashChange(hash, option) {
 	//    : id = hash.substring(1))
 	//    : id = root.getFirstPage().getId();
 
-	/**
+	/***
    * 新的页面
    */
 	const curPage = self.getPageById(id);
@@ -118,7 +121,7 @@ function hashChange(hash, option) {
 			});
 		});
 	}
-	/**
+	/***
    * 回退
    */
 	else {
@@ -142,7 +145,9 @@ function hashChange(hash, option) {
 
 /**
  * history中是否有pageId开头的page对象
- * @param pageId
+ * @access private
+ * @param {string} pageId
+ * @return {number}
  */
 function indexOfHistoryByPageId(pageId) {
 	if (pageId.indexOf("?") !== -1) {
@@ -161,12 +166,20 @@ function indexOfHistoryByPageId(pageId) {
 
 /**
  *  Router
+ *  @class
  */
 export default class {
+  /**
+	 * @constructor
+   * @param {CtMobile} ctmobile
+   */
 	constructor(ctmobile) {
 		Object.assign(this, {
+			/** @access public */
 			ctmobile,
+      /** @access public */
 			parameter: null,
+      /** @access public */
 			history: [],
 		});
 
@@ -176,8 +189,8 @@ export default class {
 
 	/**
    * 页面跳转
-   * @param pageId (pageId = pageId + params) 如: page1?a=1&b=2;
-   * @param option {
+   * @param {string} pageId (pageId = pageId + params) 如: page1?a=1&b=2;
+   * @param {object} option {
    *    reload : [true | false]
    * }
    */
@@ -231,11 +244,11 @@ export default class {
 			dispatcher();
 		}
 
-		/**
+		/***
      * 分派
      */
 		function dispatcher() {
-			/**
+			/***
        * 获取page的模式
        */
 			const mode = self.ctmobile.getTemplateConfig(pageId, "ct-data-mode");
@@ -288,7 +301,7 @@ export default class {
 
 	/**
    * 跳转到指定的历史
-   * @param index 历史位置
+   * @param {number} index - 历史位置
    * 注释：当前的位置为0 index负值为回退，index正数为前进 都以1开始
    * 例如 -1 为当前页之前的页面,1为当前页之后的页面，0为刷新当前页面
    */
@@ -305,7 +318,7 @@ export default class {
 
 	/**
    * 设置转场参数
-   * @param parameter
+   * @param {Object} parameter
    */
 	setParameter(parameter) {
 		this.parameter = parameter;
@@ -313,6 +326,7 @@ export default class {
 
 	/**
    * 获取转场的参数
+	 * @return {Object}
    */
 	getParameter() {
 		return Object.assign({}, this.parameter);
@@ -320,7 +334,7 @@ export default class {
 
 	/**
    * 根据ID获取page对象
-   * @param id
+   * @param {string} id
    * @return {*}
    */
 	getPageById(id) {
@@ -329,7 +343,7 @@ export default class {
 
 	/**
    * 根据索引获取page对象
-   * @param index
+   * @param {number} index
    * @returns {*}
    */
 	getPageByIndex(index) {
@@ -346,6 +360,7 @@ export default class {
 
 	/**
    * 获取历史栈长度
+	 * @return {number}
    */
 	getHistoryLength() {
 		return this.history.length;
@@ -353,7 +368,7 @@ export default class {
 
 	/**
    * 添加页面的历史栈
-   * @param page
+   * @param {Page} page
    */
 	addPage(page) {
 		this.history.push(page);
@@ -375,7 +390,7 @@ export default class {
 
 	/**
    * 删除历史栈中指定的页面
-   * @param index
+   * @param {number} index
    */
 	removePageByIndex(index) {
 		this.history.splice(index, 1);
