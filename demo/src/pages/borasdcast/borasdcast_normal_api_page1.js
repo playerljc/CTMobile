@@ -1,6 +1,7 @@
-import {Page} from "ctmobile/index";
+// import CtMobile from 'ctmobile';;
+import CtMobile from 'ctmobile';
 
-export default class extends Page {
+export default class extends CtMobile.Page {
   constructor(ctmobile, id) {
     super(ctmobile, id);
   }
@@ -14,7 +15,7 @@ export default class extends Page {
 
     // 注册borasdcast
     this.ctmobile.registerReceiver({
-      el: this.getPageDOM(),
+
       action: 'borasdcast_normal_api',
       priority: 0,
       categorys: []
@@ -30,5 +31,9 @@ export default class extends Page {
         }
       });
     });
+  }
+
+  pageBeforeDestroy() {
+    this.ctmobile.unregisterReceiver('borasdcast_normal_api', this.onRegisterReceiver);
   }
 }

@@ -1,6 +1,6 @@
-import {Page} from "ctmobile/index";
+import CtMobile from 'ctmobile';
 
-export default class extends Page {
+export default class extends CtMobile.Page {
 	constructor(ctmobile, id) {
 		super(ctmobile, id);
 	}

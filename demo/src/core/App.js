@@ -1,5 +1,5 @@
 import Media from "../util/media";
-import {CtMobileFactory} from "ctmobile/index";
+import CtMobile from "ctmobile";
 import Router from "../util/Router";
 
 class App {
@@ -9,7 +9,7 @@ class App {
 	}
 
 	initCtMobile() {
-		this.ctmobile = CtMobileFactory.create({
+		this.ctmobile = CtMobile.CtMobileFactory.create({
 			supportCordova: false,
 			linkCaptureReload: false,
 			router: Router,

@@ -40,14 +40,15 @@ a, a:link, a:visited, a:hover, a:active {
   background: transparent;
   z-index: 9999;
   display: none;
-  > div[opt='animation'] {
-    position: absolute;
-    width: 16px;
-    left: 50%;
-    top: 50%;
-    margin-left: -8px;
-    margin-top: -8px;
-  }
+}
+
+.ct-page-mask > div[opt='animation'] {
+  position: absolute;
+  width: 16px;
+  left: 50%;
+  top: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
 }
 
 [ct-data-role='page'] {
