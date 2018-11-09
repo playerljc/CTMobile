@@ -4,9 +4,14 @@
   "description": "一个移动端框架",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rimraf lib && babel src -d lib --ignore __tests__ && gulp",
+    "build": "rimraf lib && babel src -d lib/src --ignore __tests__ && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "CtMobile",
+    "mobile",
+    "playerljc"
+  ],
   "author": "playerljc",
   "license": "ISC",
   "devDependencies": {
@@ -19,6 +24,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.8.0",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.5.0",
     "gulp-postcss": "^7.0.1",

@@ -1,6 +1,8 @@
 var gulp = require('gulp')
-var concat = require("gulp-concat");
+// var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
+
+var clean = require('gulp-clean');
 
 gulp.task('less', function () {
   var less = require('gulp-less');
@@ -32,16 +34,14 @@ gulp.task('copy', function () {
 
 gulp.task("minjs", function () {
   return gulp.src([
-    "lib/BorasdCast.js",
-    "lib/Constant.js",
-    "lib/CtMobile.js",
-    "lib/index.js",
-    "lib/Page.js",
-    "lib/Router.js",
+    'lib/src/*.js'
   ])
-    .pipe(concat("ctmobile.min.js"))
     .pipe(uglify())
     .pipe(gulp.dest("lib"))
 });
 
-gulp.task('default', ['less', 'copy'/*, 'minjs'*/]);
+gulp.task("clean", ['minjs'], function () {
+  gulp.src("lib/src").pipe(clean());
+});
+
+gulp.task('default', ['less', 'copy', 'clean']);
