@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "rimraf lib && babel src -d lib/src --ignore __tests__ && gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc src -d doc"
   },
   "keywords": [
     "CtMobile",

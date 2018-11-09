@@ -1,4 +1,32 @@
-/***
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Page.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Page.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/***
  * Created by lzq on 2018/11/02
  * Page.js
  */
@@ -13,7 +41,7 @@ import Constant from "./Constant";
  * @param {Function} itemCallback:function(value,index){}
  */
 function forEach(array, itemCallback) {
-  for (let i = 0, len = array.length; i < len; i++) {
+  for (let i = 0, len = array.length; i &lt; len; i++) {
     if (itemCallback) {
       itemCallback.call(array[i], array[i], i);
     }
@@ -95,7 +123,7 @@ function createPageDOM() {
    * 获取page中注册的返回按钮
    */
   this._pDom.addEventListener("click", function (e) {
-    if (e.target.getAttribute("ct-data-rel") && e.target.getAttribute("ct-data-rel") === "back") {
+    if (e.target.getAttribute("ct-data-rel") &amp;&amp; e.target.getAttribute("ct-data-rel") === "back") {
       go.call(self, -1);
     }
   }, false);
@@ -157,7 +185,7 @@ function addEventListeners() {
     /***
      * 如果当前页面的transition为material则肯定不会执行webkitTransitionEnd事件
      */
-    if (e.type === "webkitTransitionEnd" && e.target.getAttribute("ct-data-role") !== "page") {
+    if (e.type === "webkitTransitionEnd" &amp;&amp; e.target.getAttribute("ct-data-role") !== "page") {
       return;
     }
 
@@ -190,8 +218,8 @@ function pageFinishTransitioneEndCallback(e) {
   /***
    * 如果当前页面的transition为material则肯定不会执行webkitTransitionEnd事件
    */
-  if ((e.type === "webkitTransitionEnd" && e.target.getAttribute("ct-data-role") !== "page") ||
-    (e.type === "webkitAnimationEnd" && e.target.getAttribute("ct-data-role") !== "page")) {
+  if ((e.type === "webkitTransitionEnd" &amp;&amp; e.target.getAttribute("ct-data-role") !== "page") ||
+    (e.type === "webkitAnimationEnd" &amp;&amp; e.target.getAttribute("ct-data-role") !== "page")) {
     return;
   }
 
@@ -229,8 +257,8 @@ function pageFinishTransitioneEndCallback(e) {
      * 如果当前页是带有返回值的页
      */
     if (
-      (ctDataMode.toLowerCase().lastIndexOf("result") !== -1) &&
-      self.resultIntent &&
+      (ctDataMode.toLowerCase().lastIndexOf("result") !== -1) &amp;&amp;
+      self.resultIntent &amp;&amp;
       self.resultIntent.resultCode
     ) {
       self.ctmobile.fireEvent(
@@ -262,8 +290,8 @@ function pageStartTransitionEndCallback(e) {
   /***
    * 如果当前页面的transition为material则肯定不会执行webkitTransitionEnd事件
    */
-  if ((e.type === "webkitTransitionEnd" && e.target.getAttribute("ct-data-role") !== "page") ||
-    (e.type === "webkitAnimationEnd" && e.target.getAttribute("ct-data-role") !== "page")) {
+  if ((e.type === "webkitTransitionEnd" &amp;&amp; e.target.getAttribute("ct-data-role") !== "page") ||
+    (e.type === "webkitAnimationEnd" &amp;&amp; e.target.getAttribute("ct-data-role") !== "page")) {
     return;
   }
 
@@ -348,14 +376,14 @@ function slideByTransition(transition, type, duration, beforeCallback) {
     /***
      * 如果过渡类型是微信类型且过渡时间为零则重置之前的面板位置
      */
-    if (transition.indexOf("wx") === 0 && duration !== 0) {
+    if (transition.indexOf("wx") === 0 &amp;&amp; duration !== 0) {
       delete self.ctmobile.getPageByIndex(self.ctmobile.getHistoryLength() - 2).pageTransitionType;
       slide.call(self.ctmobile.getPageByIndex(self.ctmobile.getHistoryLength() - 2), 0, 0, duration / 2);
     }
     /***
      * 如果过渡类型是push且过渡时间为零则重置之前的面板位置
      */
-    else if (transition.indexOf("push") === 0 && duration !== 0) {
+    else if (transition.indexOf("push") === 0 &amp;&amp; duration !== 0) {
       delete self.ctmobile.getPageByIndex(self.ctmobile.getHistoryLength() - 2).pageTransitionType;
       slide.call(self.ctmobile.getPageByIndex(self.ctmobile.getHistoryLength() - 2), 0, 0, duration);
     }
@@ -382,7 +410,7 @@ function slideByTransition(transition, type, duration, beforeCallback) {
     /***
      * 如果过渡类型是微信类型
      */
-    if (transition.indexOf("wx") === 0 && duration !== 0) {
+    if (transition.indexOf("wx") === 0 &amp;&amp; duration !== 0) {
       delete self.ctmobile.getLastPage().pageTransitionType;
       if (new RegExp(/.+left/g).exec(transition)) {
         slide.call(self.ctmobile.getLastPage(), "-20%", y, duration / 2);
@@ -397,7 +425,7 @@ function slideByTransition(transition, type, duration, beforeCallback) {
     /***
      * 如果过度类型是push
      */
-    else if (transition.indexOf("push") === 0 && duration !== 0) {
+    else if (transition.indexOf("push") === 0 &amp;&amp; duration !== 0) {
       delete self.ctmobile.getLastPage().pageTransitionType;
       if (new RegExp(/.+left/g).exec(transition)) {
         slide.call(self.ctmobile.getLastPage(), "-100%", y, duration);
@@ -741,7 +769,7 @@ class Page {
     const lastPrePageIndex = self.ctmobile.getHistoryLength() - 2;
 
     // (多于一个元素)且(改变浏览器历史)
-    if (self.ctmobile.getHistoryLength() > 1 && (!option || !option.reload)) {
+    if (self.ctmobile.getHistoryLength() > 1 &amp;&amp; (!option || !option.reload)) {
       /***
        * 最后一个页之前的页触发恢复之前事件
        */
@@ -753,7 +781,7 @@ class Page {
     }
 
     // (多于一个元素)且(改变浏览器历史)
-    if (self.ctmobile.getHistoryLength() > 1 && (!option || !option.reload)) {
+    if (self.ctmobile.getHistoryLength() > 1 &amp;&amp; (!option || !option.reload)) {
       /***
        * 恢复最后一个页之前的页
        */
@@ -784,11 +812,11 @@ class Page {
       }
 
       // (多于一个元素)且(改变浏览器历史)
-      if (self.ctmobile.getHistoryLength() > 1 && (!option || !option.reload)) {
+      if (self.ctmobile.getHistoryLength() > 1 &amp;&amp; (!option || !option.reload)) {
         self.ctmobile.fireEvent(self.ctmobile.getPageByIndex(lastPrePageIndex).getPageDOM(), "pageAfterRestore");
         if (
-          (ctDataMode.toLowerCase().lastIndexOf("result") !== -1) &&
-          self.resultIntent &&
+          (ctDataMode.toLowerCase().lastIndexOf("result") !== -1) &amp;&amp;
+          self.resultIntent &amp;&amp;
           self.resultIntent.resultCode) {
           self.ctmobile.fireEvent(
             self.ctmobile.getPageByIndex(lastPrePageIndex).getPageDOM(),
@@ -799,7 +827,7 @@ class Page {
       }
 
       // (多于一个元素)且(不改变浏览器历史)
-      if (self.ctmobile.getHistoryLength() > 1 && option && option.reload) {
+      if (self.ctmobile.getHistoryLength() > 1 &amp;&amp; option &amp;&amp; option.reload) {
         self.ctmobile.router.removePageByIndex(lastPrePageIndex, 1);
       } else {
         // 出stack
@@ -912,4 +940,26 @@ class Page {
   }
 }
 
-export default Page;
+export default Page;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BorasdCast.html">BorasdCast</a></li><li><a href="CtMobile.html">CtMobile</a></li><li><a href="CtMobileFactory.html">CtMobileFactory</a></li><li><a href="Page.html">Page</a></li><li><a href="Router.html">Router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Nov 09 2018 18:18:45 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,4 +1,32 @@
-/***
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: CtMobile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: CtMobile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/***
  * Created by lzq on 2018/11/02.
  * CtMobile.js
  * CtMobie移动端开发框架(依赖jQuery)
@@ -39,7 +67,7 @@ function getTemplateDOMById(pageId) {
 function getTemplateConfig(pageId, attr) {
   const dom = getTemplateDOMById.call(this, pageId);
   let config = dom.getAttribute(attr);
-  if ((attr === "ct-data-mode") && !config) {
+  if ((attr === "ct-data-mode") &amp;&amp; !config) {
     config = "standard";
   }
   return config;
@@ -119,15 +147,15 @@ function AjaxPreloadPromise(pageDOM) {
       const pageId = aDom.getAttribute("ct-pageId");
 
       if (
-        !pageId &&
-        ctDataAjax &&
+        !pageId &amp;&amp;
+        ctDataAjax &amp;&amp;
         ctDataAjax === "false"
       ) {
         return false;
       }
 
       const pageRouterConfig = self.config.router[pageId];
-      const href = (pageRouterConfig && pageRouterConfig.url) ? pageRouterConfig.url : "";
+      const href = (pageRouterConfig &amp;&amp; pageRouterConfig.url) ? pageRouterConfig.url : "";
       if (!href) {
         return false;
       }
@@ -160,7 +188,7 @@ function AjaxPreloadPromise(pageDOM) {
 /**
  * 初始化本地模板
  * 模板是框架的基础，一切都是基于模板生成的
- * 将<div ct-data-role="page"></div>的元素缓存到js对象中
+ * 将&lt;div ct-data-role="page">&lt;/div>的元素缓存到js对象中
  * {
  *   ct-data-role的值(id):outerHTML为值
  * }
@@ -236,7 +264,7 @@ function LinkCapturePromise() {
       if (!target) return;
       // 不是a元素
       if (
-        target.tagName.toLocaleLowerCase() !== "a" &&
+        target.tagName.toLocaleLowerCase() !== "a" &amp;&amp;
         !(target = CtMobileFactory.getParentElementByTag(target, "a"))
       ) {
         return;
@@ -245,7 +273,7 @@ function LinkCapturePromise() {
       const ctDataAjax = target.getAttribute("ct-data-ajax");
       // 如果用户不想让框架控制a元素
       if (
-        ctDataAjax &&
+        ctDataAjax &amp;&amp;
         ctDataAjax === "false"
       ) return;
 
@@ -257,7 +285,7 @@ function LinkCapturePromise() {
       }
 
       const pageRouterConfig = self.config.router[ctPageId];
-      const href = `${(pageRouterConfig && pageRouterConfig.url) ? pageRouterConfig.url : "#" + ctPageId}?pageId=${ctPageId}${ctParameter}`;
+      const href = `${(pageRouterConfig &amp;&amp; pageRouterConfig.url) ? pageRouterConfig.url : "#" + ctPageId}?pageId=${ctPageId}${ctParameter}`;
       self.startPage(href, {
         reload: target.getAttribute("ct-reload") === "true" ? true : self.config.linkCaptureReload
       });
@@ -328,7 +356,7 @@ function createPage(id) {
     const pageRouterConfig = this.config.router[pageId];
     if (pageRouterConfig) {
       const component = this.config.router[pageId].component;
-      if (component && component.then) {
+      if (component &amp;&amp; component.then) {
         component.then((Page) => {
           if (Page) {
             Class = Page.default;
@@ -383,15 +411,15 @@ function onReady() {
    * 创建page切换时的遮罩层
    */
   this.maskDOM = $(
-    "<div class='ct-page-mask'>" +
-    " <div opt='animation' class='la-ball-circus la-dark' style='color:#3e98f0;'>" +
-    "   <div></div>" +
-    "   <div></div>" +
-    "   <div></div>" +
-    "   <div></div>" +
-    "   <div></div>" +
-    " </div>" +
-    "</div>")[0];
+    "&lt;div class='ct-page-mask'>" +
+    " &lt;div opt='animation' class='la-ball-circus la-dark' style='color:#3e98f0;'>" +
+    "   &lt;div>&lt;/div>" +
+    "   &lt;div>&lt;/div>" +
+    "   &lt;div>&lt;/div>" +
+    "   &lt;div>&lt;/div>" +
+    "   &lt;div>&lt;/div>" +
+    " &lt;/div>" +
+    "&lt;/div>")[0];
   this.bodyDOM.appendChild(this.maskDOM);
 
 
@@ -428,12 +456,12 @@ function onReady() {
           if (!pageId) return false;
 
           const pageRouterConfig = self.config.router[pageId];
-          if ((pageRouterConfig && !pageRouterConfig.url)) return;
-          const url = (pageRouterConfig && pageRouterConfig.url) ? pageRouterConfig.url : `#${pageId}`;
+          if ((pageRouterConfig &amp;&amp; !pageRouterConfig.url)) return;
+          const url = (pageRouterConfig &amp;&amp; pageRouterConfig.url) ? pageRouterConfig.url : `#${pageId}`;
 
           const parameter = self.getParameterByHash();
 
-          self.startPage(`${url}${parameter}${parameter ? `&pageId=${pageId}` : `?pageId=${pageId}`}`, {
+          self.startPage(`${url}${parameter}${parameter ? `&amp;pageId=${pageId}` : `?pageId=${pageId}`}`, {
             reload: self.config.linkCaptureReload
           });
         }
@@ -494,7 +522,7 @@ class CtMobile {
    * @param {Object} config -
    * config {
    *   supportCordova: [true | false],是否支持cordova,默认为false
-   *   linkCaptureReload: [true | false],<a>标签加载页面是否改变浏览器历史,默认为true
+   *   linkCaptureReload: [true | false],&lt;a>标签加载页面是否改变浏览器历史,默认为true
    *   router: Object {
    *        id (ct-data-role="page"的id属性): Object{
    *          url:String (页面的地址)
@@ -523,7 +551,7 @@ class CtMobile {
 
   /**
    * 页面跳转
-   * @param {string} pageId - (pageId = pageId + params) 如: page1?a=1&b=2;
+   * @param {string} pageId - (pageId = pageId + params) 如: page1?a=1&amp;b=2;
    * @param {Object} option {
    *   reload : [true | false]
    * }
@@ -685,7 +713,7 @@ class CtMobile {
    */
   indexOfById(id) {
     let index = -1;
-    for (let i = 0, len = this.getHistoryLength(); i < len; i++) {
+    for (let i = 0, len = this.getHistoryLength(); i &lt; len; i++) {
       if (this.getPageByIndex(i).getId() === id) {
         index = i;
         break;
@@ -736,7 +764,7 @@ class CtMobile {
       return {};
     } else {
       const index = this.indexOfById(page.getId());
-      if (index <= 0 || index > this.getHistoryLength() - 1) {
+      if (index &lt;= 0 || index > this.getHistoryLength() - 1) {
         return {};
       } else {
         return this.getPageByIndex(this.getHistoryLength() - 2).requestIntent || {};
@@ -825,10 +853,10 @@ const CtMobileFactory = {
    */
   getUrlParam(url) {
     const reg_url = /^[^\?]+\?([\w\W]+)$/,
-      reg_para = /([^&=]+)=([\w\W]*?)(&|$)/g,
+      reg_para = /([^&amp;=]+)=([\w\W]*?)(&amp;|$)/g,
       arr_url = reg_url.exec(url),
       ret = {};
-    if (arr_url && arr_url[1]) {
+    if (arr_url &amp;&amp; arr_url[1]) {
       const str_para = arr_url[1];
       let result;
       while ((result = reg_para.exec(str_para)) != null) {
@@ -870,9 +898,9 @@ const CtMobileFactory = {
   getPageTemplateStrByAjaxStr(templateText) {
     let pageDom;
     templateText = templateText.trim();
-    const pageElemRegex = new RegExp("(<[^>]+\\bct-data-role=[\"']?page[\"']?[^>]*>)");
+    const pageElemRegex = new RegExp("(&lt;[^>]+\\bct-data-role=[\"']?page[\"']?[^>]*>)");
     if (pageElemRegex.test(templateText)) {
-      const strArr = templateText.split(/<\/?body[^>]*>/gmi);
+      const strArr = templateText.split(/&lt;\/?body[^>]*>/gmi);
       pageDom = $(((strArr || []).length === 0 ? "" : strArr.length > 1 ? strArr[1] : strArr[0]) || "")[0];
     }
 
@@ -892,4 +920,26 @@ const CtMobileFactory = {
   }
 };
 
-export default CtMobileFactory;
+export default CtMobileFactory;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BorasdCast.html">BorasdCast</a></li><li><a href="CtMobile.html">CtMobile</a></li><li><a href="CtMobileFactory.html">CtMobileFactory</a></li><li><a href="Page.html">Page</a></li><li><a href="Router.html">Router</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Nov 09 2018 18:18:45 GMT+0800 (中国标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
