@@ -1,17 +1,28 @@
 CTMobile
 =============
 移动端开发框架，适用于WebApp,Hybrid,Cordova开发
-
 开发模式
 ------------------
 1.inline
 2.ajax
-
 快速开始
 ------------------
 1.基本结构
-------------------
-<div ct-data-role="page" id="index" opt="index"></div>
+<ul>
+	<li>实例1-仿QQ界面：http://iancj.github.io/qq/</li>
+	<li>实例2-暴走漫画制作器：http://baozoumanhua.com/mobile_makers/</li>
+	<li>实例3-太湖金谷：http://wap.neeqsz.com</li>
+</ul>
+
+<ul>
+	<li>测试页面：<a href="http://www.zhangxinxu.com/GitHub/mobilebone/test/">./test/index.html</a>
+		<p><img src="http://image.zhangxinxu.com/image/blog/201801/qr-test.png" width="150" height="150"></p>
+	</li>
+</ul>
+
+<ul>
+	<li>中文文档：<a href="http://www.zhangxinxu.com/GitHub/mobilebone/docs/">./docs/index.html</a></li>
+</ul>
 
 为何需要？
 -------------
