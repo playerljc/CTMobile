@@ -97,20 +97,20 @@ const App = CtMobile.CtMobileFactory.create({
 import CtMobile from 'ctmobile';;
 
 export default class extends CtMobile.Page {
-	constructor(ctmobile, id) {
-		super(ctmobile, id);
-	}
-	
-	pageCreate(){
-	    console.log('页面初始化');
-	}
-	
-	pageShow() {
-	   console.log('page的DOM显示时调用');
-	}
-	
-	pageBeforeDestory(){
-	    console.log('page的DOM销毁之前调用');
-	}
+    constructor(ctmobile, id) {
+      super(ctmobile, id);
+    }
+    
+    pageCreate(){
+      console.log('页面初始化');
+    }
+    
+    pageShow() {
+      console.log('page的DOM显示时调用');
+    }
+    
+    pageBeforeDestory(){
+      console.log('page的DOM销毁之前调用');
+    }
 }
 ```
