@@ -10,6 +10,7 @@ CTMobile
 快速开始
 ------------------
 1.基本结构
+------------------
 <div ct-data-role="page" id="index" opt="index"></div>
 
 为何需要？
