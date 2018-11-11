@@ -94,7 +94,7 @@ const App = CtMobile.CtMobileFactory.create({
   
 4. 编写页面对应的Page
 ```js
-import CtMobile from 'ctmobile';;
+import CtMobile from 'ctmobile';
 
 export default class extends CtMobile.Page {
     constructor(ctmobile, id) {
@@ -102,7 +102,7 @@ export default class extends CtMobile.Page {
     }
     
     pageCreate(){
-      console.log('页面初始化');
+        console.log('页面初始化');
     }
     
     pageShow() {
