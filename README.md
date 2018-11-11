@@ -11,6 +11,7 @@
 <div ct-data-role="page" id="index"></div>
 ```
 具有ct-data-role="page"属性的元素代表一个基本的页面, id属性唯一标识这个页面，需要注意的是具有ct-data-role="page"属性的元素必须为body的子元素，不能是任意级别的元素。
+
 2. 初始化
 ```js
 import CtMobile from "ctmobile";
