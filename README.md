@@ -123,3 +123,18 @@ export default class extends CtMobile.Page {
     }
 }
 ```
+
+5. 跳转到一个新页面
+跳转到一个新页面可以有两种方式
+* 配置方式
+```js
+<a ct-pageId="info">跳转到info页面</a>
+```
+在a标签中使用ct-pageId属性就可以跳转到一个新的页面，其中ct-pageId的值为Page基本机构中id的值。
+
+* api方式
+使用App.startPage方法跳转到一个新的页面，其中App对象是初始化应用后的返回值，如果是在Page类中可以通过this.getCtMobile()方法获取
+```js
+this.getCtMobile().startPage("/static/html/info.html?pageId=info");
+```
+需要注意的是html路径后会有一个pageId的参数，参数值是Page基本结构中id的值
