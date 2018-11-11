@@ -49,13 +49,18 @@ CtMoble中有三个重要的感念，分别是**Page**，**Router**，**BorasdCa
 $ npm install ctmobile --save
 ```
 ## 快速开始
+
 1. 基本机构
+-------
+
 ```html
 <div ct-data-role="page" id="index"></div>
 ```
 具有ct-data-role="page"属性的元素代表一个基本的页面, id属性唯一标识这个页面，需要注意的是具有ct-data-role="page"属性的元素必须为body的子元素，不能是任意级别的元素。还需要注意的是html中至少含有一个Page的结构来代表第一个显示的页面内容
 
 2. 初始化应用
+--------
+
 ```js
 import CtMobile from "ctmobile";
 const Router = {
@@ -80,6 +85,7 @@ const App = CtMobile.CtMobileFactory.create({
 ```
 
 3. 路由
+-----
 
 在初始化应用的代码中需要配置router选项，router是一个对象，对象的键需要和基本结构中id属性的值保持一致，值为一个对象，有两个属性url和component
 
@@ -92,7 +98,10 @@ const App = CtMobile.CtMobileFactory.create({
   component: import(/* webpackChunkName: "about" */ "../pages/about")
   ```
   
+
 4. 编写页面对应的Page
+--------------
+
 ```js
 import CtMobile from 'ctmobile';
 
