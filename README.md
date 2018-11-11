@@ -91,3 +91,4 @@ const App = CtMobile.CtMobileFactory.create({
   ```js
   component: import(/* webpackChunkName: "about" */ "../pages/about")
   ```
+4. 编写页面对用的Page
