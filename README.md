@@ -37,6 +37,7 @@ const App = CtMobile.CtMobileFactory.create({
 ```
 
 3. 路由
+
 2中需要配置router选项，router是一个对象，对象的键需要和基本结构中id属性的值保持一致，值为一个对象，有两个属性url和component
 
 * url
