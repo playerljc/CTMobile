@@ -24,19 +24,26 @@ CtMoble中有三个重要的感念，分别是**Page**，**Router**，**BorasdCa
 ## Page(页面)的转场效果
  页面之间切换支持多种过度效果
  
- 1. slideleft-从右到左(overlay)
- 2. slideright-从左到右(overlay)
- 3. slideup-从下到上(overlay)
- 4. slidedown-从上到下(overlay)
- 5. wxslideleft-类似于微信的从右到左
- 6. wxslideright-类似于微信的从左到右
- 7. wxslideup-类似于微信的从下到上
- 8. wxslidedown-类似于微信的从上到下
- 9. pushslideleft-从右到左(push)
- 10. pushslideright-从左到右(push)
- 11. pushslideup-从下到上(push)
- 12. pushslidedown-从上到下(push)
- 13. material-Android Material的风格
+ 8. slideleft-从右到左(overlay)
+ 9. slideright-从左到右(overlay)
+ 10. slideup-从下到上(overlay)
+ 11. slidedown-从上到下(overlay)
+ 12. wxslideleft-类似于微信的从右到左
+ 13. wxslideright-类似于微信的从左到右
+ 14. wxslideup-类似于微信的从下到上
+ 15. wxslidedown-类似于微信的从上到下
+ 16. pushslideleft-从右到左(push)
+ 17. pushslideright-从左到右(push)
+ 18. pushslideup-从下到上(push)
+ 19. pushslidedown-从上到下(push)
+ 20. material-Android Material的风格
+##  其他功能
+ 1. 页面之间的传值
+ 2. 点击事件是否交由框架处理
+ 3. ajax内容预加载
+ 4. 新增页面是否增加历史栈
+ 5. 功能可以通过配置和api两种方式进行调用
+
 ##  安装
 ```bash
 $ npm install ctmobile --save
@@ -46,9 +53,9 @@ $ npm install ctmobile --save
 ```html
 <div ct-data-role="page" id="index"></div>
 ```
-具有ct-data-role="page"属性的元素代表一个基本的页面, id属性唯一标识这个页面，需要注意的是具有ct-data-role="page"属性的元素必须为body的子元素，不能是任意级别的元素。
+具有ct-data-role="page"属性的元素代表一个基本的页面, id属性唯一标识这个页面，需要注意的是具有ct-data-role="page"属性的元素必须为body的子元素，不能是任意级别的元素。还需要注意的是html中至少含有一个Page的结构来代表第一个显示的页面内容
 
-2. 初始化
+2. 初始化应用
 ```js
 import CtMobile from "ctmobile";
 const Router = {
@@ -74,9 +81,13 @@ const App = CtMobile.CtMobileFactory.create({
 
 3. 路由
 
-2中需要配置router选项，router是一个对象，对象的键需要和基本结构中id属性的值保持一致，值为一个对象，有两个属性url和component
+在初始化应用的代码中需要配置router选项，router是一个对象，对象的键需要和基本结构中id属性的值保持一致，值为一个对象，有两个属性url和component
 
 * url
-  代表这个页面引用的html片段地址
+  代表这个页面引用的html片段地址，片段就是一个Page的基本结构
 * component
-  返回一个Promise对象，代表这个页面的逻辑处理类
+  返回一个Promise对象，代表这个页面的逻辑处理类，Promise中返回的对象应该是集成了Page类的一个子类。
+  如用Webpack进行开发的时候可以定义成
+  ```js
+  component: import(/* webpackChunkName: "about" */ "../pages/about")
+  ```
