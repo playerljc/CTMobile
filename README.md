@@ -266,6 +266,7 @@ export default class extends CtMobile.Page {
  a.html,b.html,c.html...都弹出d.html
  * 一对多
  a.html弹出b.html,c.html,d.html...
+
 在多对一的情况下可以通过setRequest方法把父页面的标志传递过去。
 在一对多的情况下可以通过pageResult方法的requestCode区分不同来源。
 
