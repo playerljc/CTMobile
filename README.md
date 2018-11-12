@@ -1,4 +1,4 @@
-## CTMobile
+## CtMobile
 &ensp;&ensp;一个移动端框架，支持页面的多种形式切换，页面转场，页面传值，通知等，适用于开发单页面应用(SPA)，混合开发(Hybrid)，Cordova开发。
 ## 开发灵感
 &ensp;&ensp;期初刚接触Hybrid开发的时候公司选用的是jQueryMobile+Cordova的组合来开发混合应用，在用jQueryMobile的时候遇到了很多问题如管理类和Dom之间总是不能很好的有机结合在一起，当初的想法是如果在浏览器端每个局部页面和其管理类能像Android中的Activity一样就好了，所以灵感就来了，CtMobile的实现完全借助于Android中的Activity来实现。
@@ -326,5 +326,7 @@ export default class extends CtMobile.Page {
 
 
 ## 属性配置
+
+## CtMobile应用程序展示
 
 ## 许可
