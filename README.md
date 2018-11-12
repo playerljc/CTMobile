@@ -253,7 +253,7 @@ export default class extends CtMobile.Page {
     const $btnEL = this.getPageJO().find(' .result');
     $btnEl.on('click' , () => {
        this.setResult('PopUpDialog', {a: 1, b: 2});
-	   this.over();
+       this.over();
     });
   }
 }
