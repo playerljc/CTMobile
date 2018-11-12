@@ -24,19 +24,19 @@ CtMoble中有三个重要的感念，分别是**Page**，**Router**，**BorasdCa
 ## Page(页面)的转场效果
  页面之间切换支持多种过度效果
  
- 8. slideleft-从右到左(overlay)
- 9. slideright-从左到右(overlay)
- 10. slideup-从下到上(overlay)
- 11. slidedown-从上到下(overlay)
- 12. wxslideleft-类似于微信的从右到左
- 13. wxslideright-类似于微信的从左到右
- 14. wxslideup-类似于微信的从下到上
- 15. wxslidedown-类似于微信的从上到下
- 16. pushslideleft-从右到左(push)
- 17. pushslideright-从左到右(push)
- 18. pushslideup-从下到上(push)
- 19. pushslidedown-从上到下(push)
- 20. material-Android Material的风格
+ 1. slideleft-从右到左(overlay)
+ 2. slideright-从左到右(overlay)
+ 3. slideup-从下到上(overlay)
+ 4. slidedown-从上到下(overlay)
+ 5. wxslideleft-类似于微信的从右到左
+ 6. wxslideright-类似于微信的从左到右
+ 7. wxslideup-类似于微信的从下到上
+ 8. wxslidedown-类似于微信的从上到下
+ 9. pushslideleft-从右到左(push)
+ 10. pushslideright-从左到右(push)
+ 11. pushslideup-从下到上(push)
+ 12. pushslidedown-从上到下(push)
+ 13. material-Android Material的风格
 ##  其他功能
  1. 页面之间的传值
  2. 点击事件是否交由框架处理
