@@ -78,9 +78,9 @@ const Router = {
   },
 };
 const App = CtMobile.CtMobileFactory.create({
-	supportCordova: false,
-	linkCaptureReload: false,
-	router: Router,
+    supportCordova: false,
+    linkCaptureReload: false,
+    router: Router,
 });
 ```
 
