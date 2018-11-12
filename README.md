@@ -305,6 +305,9 @@ export default class extends CtMobile.Page {
 
 **9. Page的生命周期**
 ---------
+Page一共有10个生命周期函数
+
+![Page生命周期](https://github.com/playerljc/CTMobile/tree/master/outimages/pagelife.png)
 
 **10. 页面转场效果**
 ---------
