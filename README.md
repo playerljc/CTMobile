@@ -274,10 +274,16 @@ export default class extends CtMobile.Page {
 **8. Page的启动模式**
 ---------
 在页面的基本结构中设置ct-data-mode属性值即可，框架一共支持5中启动模式
- * standard
-  多例模式
+ * standard（默认）
+  &ensp;&ensp;多例模式
+  &ensp;&ensp;多例模式就是通过配置或者api跳转到此页面的时候都会建立一个新的实例，所谓新的实例就是Dom和Dom对应的Page类都会是新的。
  * single
-  单例模式(当点击返回时会销毁)
+  &ensp;&ensp;单例模式(当点击返回时会销毁)
+  和Android中single一样,举个例子，加入有如下的页面开发顺序 :
+  index.html -> a.html -> b.html -> c.html -> d.html -> b.html
+  如果把b.html的ct-data-mode设置为single，那么执行上述页面顺序后，   历史栈中当前是 index.html -> a.html -> b.html 
+  也是删除了c.html和d.html，删除的同事也会调用相应的生命周期函数。
+  但是如果在b.html中点击返回那么b.html还是会销毁的。
  * singleInstance
   完全的单例模式(在任何时候都不会被销毁)
  * result
