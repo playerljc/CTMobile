@@ -304,6 +304,7 @@ export default class extends CtMobile.Page {
   &ensp;&ensp;和result一样只是实例不会被销毁。
 
 **9. Page的生命周期**
+---------
 
 **10. 页面转场效果**
 ---------
