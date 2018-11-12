@@ -470,6 +470,4 @@ export default class extends CtMobile.Page {
 
 ## Demo程序的运行
 
-## CtMobile应用程序展示
-
 ## 许可
