@@ -425,9 +425,11 @@ export default class extends CtMobile.Page {
  }, this.onRegisterReceiver);
  ```
    * 向后传递参数和终止传递 
+   
  在有序广播的回调函数中会有2个参数intent和opt，其中intent是通知传递的参数，opt是个对象，其中有2个方法,putExtras和next，其中putExtras设置向下传递的参数，这些参数是合并在一起的。只有调用next方法才向下进行传递。
   
    * 通知的分类(categorys)
+   
  在注册广播的时候除了Action之外，还可以定义多个category，categorys可以认为是一个二级标题，作用是用来对Action进行细粒度的定义。 
    
 **12. 其他功能**
