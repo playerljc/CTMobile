@@ -279,20 +279,20 @@ export default class extends CtMobile.Page {
   &ensp;&ensp;多例模式就是通过配置或者api跳转到此页面的时候都会建立一个新的实例，所谓新的实例就是Dom和Dom对应的Page类都会是新的。
  * single
   &ensp;&ensp;单例模式(当点击返回时会销毁)
-  和Android中single一样,举个例子，加入有如下的页面开发顺序 :
+  &ensp;&ensp;和Android中single一样,举个例子，加入有如下的页面开发顺序 :
   index.html -> a.html -> b.html -> c.html -> d.html -> b.html
   如果把b.html的ct-data-mode设置为single，那么执行上述页面顺序后，   历史栈中当前是 index.html -> a.html -> b.html 
   也是删除了c.html和d.html，删除的同事也会调用相应的生命周期函数。
   但是如果在b.html中点击返回那么b.html还是会销毁的。
  * singleInstance
-  完全的单例模式(在任何时候都不会被销毁)
-  完全单例就是在任何时候都不会被销毁且只有一个实例存在。
+  &ensp;&ensp;完全的单例模式(在任何时候都不会被销毁)
+  &ensp;&ensp;完全单例就是在任何时候都不会被销毁且只有一个实例存在。
  * result
-  带有返回值的(可以向父页面带回返回值)
-  [参见带有返回值的页面](#7-带有返回值的页面)
+  &ensp;&ensp;带有返回值的(可以向父页面带回返回值)
+  &ensp;&ensp;[参见带有返回值的页面](#7-带有返回值的页面)
  * singleInstanceResult
-  带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
-  和result一样只是实例不会被销毁。
+  &ensp;&ensp;带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
+  &ensp;&ensp;和result一样只是实例不会被销毁。
 
 **9. 页面转场效果**
 ---------
