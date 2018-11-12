@@ -83,7 +83,7 @@ const App = CtMobile.CtMobileFactory.create({
     router: Router,
 });
 ```
-&ensp;详细参数解释请参考[配置](#配置)。
+&ensp;详细参数解释请参考[属性配置](#属性配置)。
 
 **3. 路由**
 -----
@@ -303,7 +303,9 @@ export default class extends CtMobile.Page {
 
   &ensp;&ensp;和result一样只是实例不会被销毁。
 
-**9. 页面转场效果**
+**9. Page的生命周期**
+
+**10. 页面转场效果**
 ---------
 在页面的基本结构中设置ct-data-transition属性值即可，框架一共支持13种页面的过度效果
 
@@ -321,7 +323,7 @@ export default class extends CtMobile.Page {
  * pushslidedown-从上到下(push)
  * material-Android Material的风格
 
-**10. 广播(borasdcast)**
+**11. 广播(borasdcast)**
 ---------
 &ensp;&ensp;借鉴了Android中Borasdcast概念，为Page之间的数据传递提供了一系列功能，广播分为有序和无序，可以通过配置和api两种方式实现广播。
 
@@ -424,7 +426,7 @@ export default class extends CtMobile.Page {
    * 向后传递参数和终止传递 
  在有序广播的回调函数中会有2个参数intent和opt，其中intent是通知传递的参数，opt是个对象，其中有2个方法,putExtras和next，其中putExtras设置向下传递的参数，这些参数是合并在一起的。只有调用next方法才向下进行传递。
 
-**11. 其他功能**
+**12. 其他功能**
 ---------
  * 是否增加历史
  如果不想让新跳转的页面增加到历史栈中，可以设置ct-reload属性为true来阻止浏览器增加历史。
