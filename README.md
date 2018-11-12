@@ -135,7 +135,7 @@ export default class extends CtMobile.Page {
 }
 ```
 &ensp;&ensp;编写一个类继承自Page类即可完成一个页面的定义，其中构造函数会有两个参数，ctmobile和id，其中ctmobile代表整个App的实例，id代表Page基本机构中的id属性值。
-&ensp;&ensp;其中pageCreate，pageShow和pageBeforeDestory是Page的生命周期函数，更多生命周期函数请参考[生命周期](#生命周期)
+&ensp;&ensp;其中pageCreate，pageShow和pageBeforeDestory是Page的生命周期函数，更多生命周期函数请参考[Page的生命周期](#9-Page的生命周期)
 
 **5. 跳转到一个新页面**
 -----------
