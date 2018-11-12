@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
     super(ctmobile, id);
   }
 
+  /**
+   * @override
+   */
   pageCreate() {
     this.getPageJO().find(' .trigger').on('click', () => {
       this.ctmobile.sendBroadcast({

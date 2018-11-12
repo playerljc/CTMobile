@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
 		super(ctmobile, id);
 	}
 
+  /**
+   * @override
+   */
 	pageCreate() {
 		const $backAndResultJO = this.getPageJO().find(" .backAndResult");
 		$backAndResultJO.on("click", () => {

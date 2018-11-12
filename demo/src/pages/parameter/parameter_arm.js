@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
 		super(ctmobile, id);
 	}
 
+  /**
+   * @override
+   */
 	pageAfterShow() {
 		const parameter = JSON.stringify(this.getRequest());
 		const $pageContentJO = this.getPageJO().find(" .ct-content");
