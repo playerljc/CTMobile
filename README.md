@@ -305,9 +305,25 @@ export default class extends CtMobile.Page {
 
 **9. 页面转场效果**
 ---------
+在页面的基本结构中设置ct-data-transition属性值即可，框架一共支持13种页面的过度效果
+
+* slideleft-从右到左(overlay)
+* slideright-从左到右(overlay)
+* slideup-从下到上(overlay)
+* slidedown-从上到下(overlay)
+* wxslideleft-类似于微信的从右到左
+* wxslideright-类似于微信的从左到右
+* wxslideup-类似于微信的从下到上
+* wxslidedown-类似于微信的从上到下
+* pushslideleft-从右到左(push)
+* pushslideright-从左到右(push)
+* pushslideup-从下到上(push)
+* pushslidedown-从上到下(push)
+* material-Android Material的风格
 
 **10. 广播(borasdcast)**
 ---------
+
 
 ## 属性配置
 
