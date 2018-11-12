@@ -293,6 +293,7 @@ export default class extends CtMobile.Page {
  * singleInstanceResult
   带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
   和result一样只是实例不会被销毁。
+
 **9. 页面转场效果**
 ---------
 
