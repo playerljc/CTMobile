@@ -144,8 +144,8 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 ---------
 * 字符串方式
   * 使用ct-parameter属性
- ```js
- <a ct-pageId="about" ct-parameter="&a=1&b=2"></a>
- ```
+     ```js
+     <a ct-pageId="about" ct-parameter="&a=1&b=2"></a>
+     ```
 * 内存方式
 
