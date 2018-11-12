@@ -11,15 +11,15 @@ CtMoble中有三个重要的感念，分别是**Page**，**Router**，**BorasdCa
  2. ajax模式
  每个页面在需要的时候才进行加载，且只加载一次
 ## Page(页面)的启动模式
- 3. standard
+ 1. standard
  多例模式
- 4. single
+ 2. single
  单例模式(当点击返回时会销毁)
- 5. singleInstance
+ 3. singleInstance
  完全的单例模式(在任何时候都不会被销毁)
- 6. result
+ 4. result
  带有返回值的(可以向父页面带回返回值)
- 7. singleInstanceResult
+ 5. singleInstanceResult
  带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
 ## Page(页面)的转场效果
  页面之间切换支持多种过度效果
