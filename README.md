@@ -65,17 +65,17 @@ $ npm install ctmobile --save
 import CtMobile from "ctmobile";
 const Router = {
     index: {
-        url: "/static/html/index.html",
-        component: import(/* webpackChunkName: "index" */ "../pages/index"),
+      url: "/static/html/index.html",
+      component: import(/* webpackChunkName: "index" */ "../pages/index"),
     },
     info: {
-        url: "/static/html/info.html",
-        component: import(/* webpackChunkName: "info" */ "../pages/info"),
+      url: "/static/html/info.html",
+      component: import(/* webpackChunkName: "info" */ "../pages/info"),
     },
     about: {
-        url: "/static/html/about.html",
-        component: import(/* webpackChunkName: "about" */ "../pages/about"),
-  },
+      url: "/static/html/about.html",
+      component: import(/* webpackChunkName: "about" */ "../pages/about"),
+    },
 };
 const App = CtMobile.CtMobileFactory.create({
     supportCordova: false,
