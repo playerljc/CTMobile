@@ -125,6 +125,7 @@ export default class extends CtMobile.Page {
 ```
 
 5. 跳转到一个新页面
+-----------
 跳转到一个新页面可以有两种方式
 * 配置方式
 ```js
@@ -138,3 +139,13 @@ export default class extends CtMobile.Page {
 this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 ```
 需要注意的是html路径后会有一个pageId的参数，参数值是Page基本结构中id的值
+
+6. 页面间传递参数
+---------
+* 字符串方式
+ * 使用ct-parameter属性
+ ```js
+ <a ct-pageId="about" ct-parameter="&a=1&b=2"></a>
+ ```
+* 内存方式
+
