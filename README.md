@@ -83,6 +83,7 @@ const App = CtMobile.CtMobileFactory.create({
     router: Router,
 });
 ```
+&ensp;详细参数解释请参考[配置](#配置)。
 
 **3. 路由**
 -----
@@ -92,7 +93,7 @@ const App = CtMobile.CtMobileFactory.create({
 * url
   代表这个页面引用的html片段地址，片段就是一个Page的基本结构
 * component
-  返回一个Promise对象，代表这个页面的逻辑处理类，Promise中返回的对象应该是集成了Page类的一个子类。
+  返回一个Promise对象，代表这个页面的逻辑处理类，Promise中返回的对象应该是继承了Page类的一个子类。
   如用Webpack进行开发的时候可以定义成
   ```js
   component: import(/* webpackChunkName: "about" */ "../pages/about")
@@ -181,3 +182,17 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 	}
    ```
 &ensp;&ensp;需要注意的是需要在pageAfterShow的回调中调用getRequest方法，只要pageAfterShow函数被调用，之后在任何地方在调用getRequest方法都可以获取到参数。
+
+**7. 带有返回值的页面**
+---------
+
+**8. Page的启动模式**
+---------
+
+**9. 页面转场效果**
+---------
+
+**10. 广播(borasdcast)**
+---------
+
+## 属性配置
