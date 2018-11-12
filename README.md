@@ -286,10 +286,13 @@ export default class extends CtMobile.Page {
   但是如果在b.html中点击返回那么b.html还是会销毁的。
  * singleInstance
   完全的单例模式(在任何时候都不会被销毁)
+  完全单例就是在任何时候都不会被销毁且只有一个实例存在。
  * result
   带有返回值的(可以向父页面带回返回值)
+  [参见带有返回值的页面](#7-带有返回值的页面)
  * singleInstanceResult
   带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
+  和result一样只是实例不会被销毁。
 **9. 页面转场效果**
 ---------
 
