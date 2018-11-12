@@ -11,10 +11,22 @@
   "keywords": [
     "CtMobile",
     "mobile",
-    "playerljc"
+    "webapp",
+    "SPA",
+    "Hybrid",
+    "Cordova",
+    "Android",
+    "iOS",
+    "Material",
+    "playerljc",
+    "WebFramework"
   ],
-  "author": "playerljc",
-  "license": "ISC",
+  "author": "playerljc <playerljc@163.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/playerljc/CTMobile.git"
+  },
   "devDependencies": {
     "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.3",
