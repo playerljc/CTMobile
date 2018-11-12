@@ -326,9 +326,70 @@ export default class extends CtMobile.Page {
 &ensp;&ensp;借鉴了Android中Borasdcast概念，为Page之间的数据传递提供了一系列功能，广播分为有序和无序，可以通过配置和api两种方式实现广播。
 
  * 通过配置注册
-   
+   在基本机构中加入ct-data-intentfilter-action，ct-data-intentfilter-categorys属性进行注册
+   ```html
+   <div ct-page-role="page" 
+    id="index" 
+    ct-data-intentfilter-action="actionCode"
+    ct-data-intentfilter-categorys="c1,c2"
+    ct-data-intentfilter-priority="0"
+   ></div>
+   ```
+   Page中重写pageReceiver方法
+   ```js
+   import CtMobile from 'ctmobile';
+   export default class extends CtMobile.Page {
+      constructor(ctmobile,id){
+        super(ctmobile,id);
+      }
+      
+      /**
+       * @override
+       */
+      pageReceiver(intent) {
+        console.log(intent);
+      }
+   } 
+   ```
  * 通过api注册
+   ```js
+   import CtMobile from 'ctmobile';
+   export default class extends CtMobile.Page {
+     constructor(ctmobile,id){
+       super(ctmobile,id);
+     }
+     
+     onRegisterReceiver(intent) {
+        console.log(JSON.stringify(intent));
+     }
+  
+     /**
+       * @override
+       */
+     pageCreate() {
+       this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
+
+       // 注册borasdcast
+       this.ctmobile.registerReceiver({
+         action: 'actionCode',
+         priority: 0,
+         categorys: ['c1','c2']
+       }, this.onRegisterReceiver);
+     }
+   }
+   ```
  * 发送无序广播
+ 在Page类中调用CtMobile的sendBroadcast方法
+ ```js
+ this.ctmobile.sendBroadcast({
+    action: 'actionCode',
+    categorys: ['c1','c2'],
+    bundle: {
+      a: 1,
+      b: 2
+    }
+ });
+ ```
  * 发送有序广播
 
 **11. 其他功能**
