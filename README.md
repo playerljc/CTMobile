@@ -165,7 +165,7 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
   this.getCtMobile().startPage("/static/html/info.html?pageId=info&a=1&b=2");
   ```
 * 内存方式
-&ensp;&ensp;通过调用Page类的setRequest方法进行参数传递，在目标页面调用Page类的getRequest方法获取参数
+&ensp;&ensp;通过调用Page类的setRequest方法进行参数传递，在目标页面调用Page类的getRequest方法获取参数，使用内存方式的好处是可以在页面之间传递任何数据类型的数据，缺点是如果直接刷新此页的话不会保存上一回的数据，不像字符串方式可以永久保留参数的值
   
    A.js
    ```js
@@ -185,6 +185,79 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 
 **7. 带有返回值的页面**
 ---------
+&ensp;&ensp; 页面的基本结构中加入ct-page-mode="result"或者ct-page-mode="singleInstanceResult"属性
+
+&ensp;&ensp;举个例子，当前有两个页面index.html，PopUpDialog.html两个页面。index.html中有个弹出按钮，点击按钮弹出PopUpDialog页面
+
+&ensp;&ensp;index.html定义
+```js
+<div ct-data-role="page" id="index">
+    <a ct-pageId="PopUpDialog">弹出PopUpDialog</a>
+    <div class="resultText">PopUpDialog的返回值<div>
+</div>
+```
+&ensp;&ensp;index.js定义
+```js
+import CtMobile from 'ctmobile';
+import $ from 'jquery';
+export default class extends CtMobile.Page{
+  constructor(ctmobile,id){
+    super(ctmobile,id);
+  }
+  
+  /**
+   * override
+   */
+  pageCreate() {
+    
+  }
+  
+  /**
+   * PopUpDialog返回时触发
+   * override
+   */
+  pageResult(e, resultCode, bundle) {
+     console.log("resultCode", resultCode, "bundle", JSON.stringify(bundle));
+     alert(`resultCode:${resultCode}\r\nbundle:${JSON.stringify(bundle)}`);
+  }
+}
+```
+
+&ensp;&ensp;PopUpDialog的html定义
+```html
+<div ct-data-role="page" id="PopUpDialog" ct-data-mode="result">
+    <button class="result">返回</button>
+</div>
+```
+&ensp;&ensp;或者
+```html
+<div ct-data-role="page" id="PopUpDialog" ct-data-mode="singleInstanceResult">
+    <button class="result">返回</button>
+</div>
+```
+
+&ensp;&ensp;PopUpDialog.js定义
+```js
+import CtMobile from 'ctmobile';
+import $ from 'jquery';
+
+export default class extends CtMobile.Page {
+  constructor(ctmobile,id){
+    super(ctmobile,id);
+  }
+  
+  /**
+   * override
+   */
+  pageCreate() {
+    const $btnEL = this.getPageJO().find(' .result');
+    $btnEl.on('click' , () => {
+       this.setResult('PopUpDialog', {a: 1, b: 2});
+	   this.over();
+    });
+  }
+}
+```
 
 **8. Page的启动模式**
 ---------
@@ -196,3 +269,5 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 ---------
 
 ## 属性配置
+
+## 许可
