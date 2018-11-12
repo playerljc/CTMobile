@@ -97,6 +97,7 @@ const App = CtMobile.CtMobileFactory.create({
   ```js
   component: import(/* webpackChunkName: "about" */ "../pages/about")
   ```
+  component属性可以不进行设置，如果不设置component属性，那么框架会认为url载入的页面只进行显示，不进行逻辑处理。
   
 
 **4. 编写页面对应的Page**
