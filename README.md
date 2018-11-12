@@ -422,7 +422,7 @@ export default class extends CtMobile.Page {
  }, this.onRegisterReceiver);
  ```
    * 向后传递参数和终止传递 
- 
+ 在有序广播的回调函数中会有2个参数intent和opt，其中intent是通知传递的参数，opt是个对象，其中有2个方法,putExtras和next，其中putExtras设置向下传递的参数，这些参数是合并在一起的。只有调用next方法才向下进行传递。
 
 **11. 其他功能**
 ---------
