@@ -459,8 +459,8 @@ export default class extends CtMobile.Page {
     <a ct-pageId="e" ct-data-preload="true">into e.html</a>
  </div>
  ```
- 框架会在初始化的时候就加载a~e.html的内容
- 如果a~e.html中还有需要预加载的页面，那框架还会进行预加载
+ 框架会在初始化的时候就加载a-e.html的内容
+ 如果a-e.html中还有需要预加载的页面，那框架还会进行预加载
  每个页面只会被预加载一次，如果预加载完了以后就不会在被预加载了。
  
  * 使用配置进行页面的返回
