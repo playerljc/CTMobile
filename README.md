@@ -404,8 +404,7 @@ export default class extends CtMobile.Page {
  ```
  * 有序广播
    * 通知的优先级 
-   
- 有序广播的通知是有顺序的，这个顺序是有priority这个属性决定的，priority越大越先被通知到，越小越晚被通知到。
+   有序广播的通知是有顺序的，这个顺序是有priority这个属性决定的，priority越大越先被通知到，越小越晚被通知到。
  使用配置设置priority
 ```html
 <div ct-page-role="page" 
