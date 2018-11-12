@@ -511,5 +511,11 @@ Page一共有10个生命周期函数
 ## CtMobile应用程序展示
 
 ## Demo程序的运行
+&ensp;&ensp;checkou后进入demo目录
+```bash
+$ npm install
+$ npm start
+```
+&ensp;&ensp;在浏览器上输入localhost:8000即可访问到demo的主页面
 
 ## 许可
