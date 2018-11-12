@@ -153,6 +153,7 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
   ```
 * 内存方式
 通过调用Page类的setRequest方法进行参数传递，在目标页面调用Page类的getRequest方法获取参数
+  
    A.js
    ```js
    <!-- 向B.html传递参数 -->
