@@ -519,3 +519,4 @@ $ npm start
 &ensp;&ensp;在浏览器上输入localhost:8000即可访问到demo的主页面
 
 ## 许可
+[MIT](/LICENSE)
