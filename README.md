@@ -402,6 +402,27 @@ export default class extends CtMobile.Page {
     }
  });
  ```
+ * 有序广播
+   * 通知的优先级 
+ 有序广播的通知是有顺序的，这个顺序是有priority这个属性决定的，priority越大越先被通知到，越小越晚被通知到。
+ 使用配置设置priority
+```html
+<div ct-page-role="page" 
+    id="index" 
+    ct-data-intentfilter-priority="0"
+   ></div>
+```
+ 使用api注册设置priority
+ ```js
+ // 注册borasdcast
+ this.ctmobile.registerReceiver({
+    action: 'actionCode',
+    priority: 0,
+    categorys: ['c1','c2']
+ }, this.onRegisterReceiver);
+ ```
+   * 向后传递参数和终止传递 
+ 
 
 **11. 其他功能**
 ---------
