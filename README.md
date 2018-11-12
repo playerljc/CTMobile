@@ -152,4 +152,19 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
   this.getCtMobile().startPage("/static/html/info.html?pageId=info&a=1&b=2");
   ```
 * 内存方式
-
+通过调用Page类的setRequest方法进行参数传递，在目标页面调用Page类的getRequest方法获取参数
+   A.js
+   ```js
+   <!-- 向B.html传递参数 -->
+   this.setRequest('requestCode',{a:1,b:2});
+   this.ctmobile.startPage("/static/html/b.html?pageId=b");
+   ```
+   B.js
+   ```js
+   pageAfterShow() {
+       <!-- 获取A.html传递过来的参数 -->
+       const parameter = JSON.stringify(this.getRequest());
+	   console.log('parameter',parameter);
+	}
+   ```
+   需要注意的是需要在pageAfterShow的回调中调用getRequest方法，只要pageAfterShow函数被调用，之后在任何地方在调用getRequest方法都可以获取到参数。
