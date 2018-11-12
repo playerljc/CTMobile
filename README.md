@@ -258,6 +258,16 @@ export default class extends CtMobile.Page {
   }
 }
 ```
+&ensp;&ensp;index.html需要做的是在index.js中重写pageResult方法，此方法在PopUpDialog返回或手动调用finish方法后被触发，pageResult的有三个参数e，resultCode，bundle，其中resultCode用来区分不同的来源，bundle是被带回来的值。
+&ensp;&ensp;PopUpDialog.html需要做的是在PopUpDialog.js中调用this.setResult(resultCode,bundle);方法来设置返回的值，在调用this.finish();方法后页面关闭。
+
+带有返回值的页面使用场景一般分为两种
+ * 多对一
+ a.html,b.html,c.html...都弹出d.html
+ * 一对多
+ a.html弹出b.html,c.html,d.html...
+在多对一的情况下可以通过setRequest方法把父页面的标志传递过去。
+在一对多的情况下可以通过pageResult方法的requestCode区分不同来源。
 
 **8. Page的启动模式**
 ---------
