@@ -439,7 +439,30 @@ export default class extends CtMobile.Page {
  比如index.html -> a.html，那么历史栈中只有a.html
  
  * a标签不交由框架处理
+ 有些时候我们不希望让框架来处理a标签的行为，此时就可以在a标签上加入ct-data-ajax="false"
+
  * ajax内容预加载
+ ```html
+ <div ct-data-role="page" id="index">
+    <a ct-pageId="a" ct-data-preload="true">into a.html</a>
+    <a ct-pageId="b" ct-data-preload="true">into b.html</a>
+    <a ct-pageId="c" ct-data-preload="true">into c.html</a>
+    <a ct-pageId="d" ct-data-preload="true">into d.html</a>
+    <a ct-pageId="e" ct-data-preload="true">into e.html</a>
+ </div>
+ ```
+ 框架会在初始化的时候就加载a~e.html的内容
+ 如果a~e.html中还有需要预加载的页面，那框架还会进行预加载
+ 每个页面只会被预加载一次，如果预加载完了以后就不会在被预加载了。
+ 
+ * 使用配置进行页面的返回
+ ```html
+ <div ct-data-role="page" id="about">
+    <header>
+      <a class="ct-back-icon" ct-data-rel="back"></a>
+    </header>
+ </div>
+ ```
  
 ## 属性配置
 
