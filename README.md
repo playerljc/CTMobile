@@ -306,9 +306,9 @@ export default class extends CtMobile.Page {
 **9. Page的生命周期**
 ---------
 Page一共有10个生命周期函数
-
+<div align=center>
 ![](https://github.com/playerljc/CTMobile/raw/master/outimages/pagelife.png "Page生命周期")
-
+</div>
 **10. 页面转场效果**
 ---------
 在页面的基本结构中设置ct-data-transition属性值即可，框架一共支持13种页面的过度效果
