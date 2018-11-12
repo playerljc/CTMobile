@@ -147,5 +147,9 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
   ```js
   <a ct-pageId="about" ct-parameter="&a=1&b=2"></a>
   ```
+  * 使用api方式
+  ```js
+  this.getCtMobile().startPage("/static/html/info.html?pageId=info&a=1&b=2");
+  ```
 * 内存方式
 
