@@ -50,7 +50,7 @@ $ npm install ctmobile --save
 ```
 ## 快速开始
 
-**1. 基本机构**
+**1. 基本的html结构**
 -------
 
 ```html
