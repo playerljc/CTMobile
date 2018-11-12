@@ -273,7 +273,17 @@ export default class extends CtMobile.Page {
 
 **8. Page的启动模式**
 ---------
-
+在页面的基本结构中设置ct-data-mode属性值即可，框架一共支持5中启动模式
+ * standard
+  多例模式
+ * single
+  单例模式(当点击返回时会销毁)
+ * singleInstance
+  完全的单例模式(在任何时候都不会被销毁)
+ * result
+  带有返回值的(可以向父页面带回返回值)
+ * singleInstanceResult
+  带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
 **9. 页面转场效果**
 ---------
 
