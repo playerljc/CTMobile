@@ -391,6 +391,17 @@ export default class extends CtMobile.Page {
  });
  ```
  * 发送有序广播
+ 在Page类中调用CtMobile的sendOrderedBroadcast方法
+ ```js
+ this.ctmobile.sendOrderedBroadcast({
+    action: 'actionCode',
+    categorys: ['c1','c2'],
+    bundle: {
+      a: 1,
+      b: 2
+    }
+ });
+ ```
 
 **11. 其他功能**
 ---------
