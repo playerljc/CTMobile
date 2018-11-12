@@ -426,7 +426,21 @@ export default class extends CtMobile.Page {
 
 **11. 其他功能**
 ---------
-
+ * 是否增加历史
+ 如果不想让新跳转的页面增加到历史栈中，可以设置ct-reload属性为true来阻止浏览器增加历史。
+ ```html
+ <a ct-pageId="a" ct-reload="true">a.html</a>
+ ```
+ ```js
+ this.ctmobile.startPage('/static/html/a.html?pageId=a',{
+    reload:true
+ });
+ ```
+ 比如index.html -> a.html，那么历史栈中只有a.html
+ 
+ * a标签不交由框架处理
+ * ajax内容预加载
+ 
 ## 属性配置
 
 ## CtMobile应用程序展示
