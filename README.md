@@ -508,6 +508,10 @@ Page一共有10个生命周期函数
 | ct-data-intentfilter-categorys | [string1 string2 …]  | 订阅时的过滤参数                                         |
 | ct-data-intentfilter-priority  | number 0(缺省)       | 发送有序广播时的优先级，默认值是0                        |
 
+## api文档
+
+[docs](./doc/index.html)
+
 ## CtMobile应用程序展示
 
 ## Demo程序的运行
