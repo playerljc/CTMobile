@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf lib && babel src -d lib/src --ignore __tests__ && gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "jsdoc src -d doc"
+    "doc": "jsdoc src README.md -d doc -u doc/tutorials"
   },
   "keywords": [
     "CtMobile",
