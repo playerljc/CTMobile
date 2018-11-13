@@ -4,8 +4,6 @@ node_modules
 
 dist
 
-lib
-
 #package-webpack.json
 
 #webpack.config.js
