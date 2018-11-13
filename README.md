@@ -48,6 +48,10 @@
 ```bash
 $ npm install ctmobile --save
 ```
+
+##  API文档
+[docs](https://playerljc.github.io/)
+
 ## 快速开始
 
 **1. 基本的html结构**
@@ -507,10 +511,6 @@ Page一共有10个生命周期函数
 | ct-data-intentfilter-action    | string               | 如果页面要订阅通知时的标识                               |
 | ct-data-intentfilter-categorys | [string1 string2 …]  | 订阅时的过滤参数                                         |
 | ct-data-intentfilter-priority  | number 0(缺省)       | 发送有序广播时的优先级，默认值是0                        |
-
-## api文档
-
-[docs](./doc/index.html)
 
 ## CtMobile应用程序展示
 
