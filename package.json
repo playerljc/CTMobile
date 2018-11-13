@@ -25,7 +25,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/playerljc/CTMobile.git"
+    "url": "git+https://github.com/playerljc/CTMobile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/playerljc/CTMobile/issues"
   },
   "devDependencies": {
     "autoprefixer": "^8.5.0",
