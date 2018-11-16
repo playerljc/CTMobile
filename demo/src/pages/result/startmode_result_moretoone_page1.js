@@ -1,4 +1,4 @@
-import CtMobile from 'ctmobile';;
+import CtMobile from 'ctmobile';
 
 export default class extends CtMobile.Page {
 	constructor(ctmobile, id) {

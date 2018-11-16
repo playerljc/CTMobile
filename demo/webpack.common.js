@@ -145,11 +145,10 @@ module.exports = {
         loader: 'ejs-loader?variable=data'
       }
     ]
-  },
-  // resolve: {
-  //   alias: {
-  //     // ctmobile: path.resolve(__dirname,'src/ctmobile/'),
-  //     ctmobile: 'D:\\frameworker\\frameworks\\ctmobile\\CTMobile\\dist\\ctmobile.js'
-  //   }
-  // }
+  }/*,
+  resolve: {
+    alias: {
+      ctmobile: path.resolve(__dirname,'src/ctmobile/'),
+    }
+  }*/
 };
