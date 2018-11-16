@@ -188,7 +188,7 @@ class Router {
 
   /**
    * 页面跳转
-   * @param {string} pageId (pageId = pageId + params) 如: page1?a=1&b=2;
+   * @param {string} href (pageId = pageId + params) 如: page1?a=1&b=2;
    * @param {object} option {
    *    reload : [true | false]
    * }
@@ -328,7 +328,11 @@ class Router {
    * @return {Object}
    */
   getParameter() {
-    return Object.assign({}, this.parameter);
+    let parameter = Object.assign({}, this.parameter);
+    if(parameter.pageId) {
+      delete parameter.pageId;
+    }
+    return parameter;
   }
 
   /**
