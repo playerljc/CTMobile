@@ -18,7 +18,7 @@ export default class extends CtMobile.Page {
 
     // 注册borasdcast
     this.ctmobile.registerReceiver({
-
+      el: this.getPageDOM(),
       action: 'borasdcast_normal_api',
       priority: 0,
       categorys: []
@@ -34,9 +34,5 @@ export default class extends CtMobile.Page {
         }
       });
     });
-  }
-
-  pageBeforeDestroy() {
-    this.ctmobile.unregisterReceiver('borasdcast_normal_api', this.onRegisterReceiver);
   }
 }

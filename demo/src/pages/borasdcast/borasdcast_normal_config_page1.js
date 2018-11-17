@@ -24,7 +24,7 @@ export default class extends CtMobile.Page {
   /**
    * @override
    */
-  pageReceiver() {
-
+  pageReceiver(intent) {
+    alert(JSON.stringify(intent));
   }
 }

@@ -20,4 +20,11 @@ export default class extends CtMobile.Page {
       });
     });
   }
+
+  /**
+   * @override
+   */
+  pageReceiver(intent) {
+    alert(JSON.stringify(intent));
+  }
 }
