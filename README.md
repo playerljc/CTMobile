@@ -1,4 +1,4 @@
-english | [简体中文](https://github.com/playerljc/CTMobile/README_zh-CN.md "简体中文")
+english | [简体中文](https://github.com/playerljc/CTMobile/blob/master/README_zh-CN.md "简体中文")
 
 ## CtMobile
 &ensp;&ensp; A mobile-side framework that supports multiple forms of page switching, page transitions, page values, notifications, etc., suitable for developing single-page applications (SPA), hybrid development (mixed), and Córdoba development.
