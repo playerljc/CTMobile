@@ -89,7 +89,7 @@ const App = CtMobile.CtMobileFactory.create({
     router: Router,
 });
 ```
-&ensp; For detailed parameter explanation, please refer to [Property Configuration](#Property Configuration).
+&ensp; For detailed parameter explanation, please refer to [Property Configuration](#attribute-configuration).
 
 **3. router**
 -----
@@ -140,7 +140,7 @@ export default class extends CtMobile.Page {
 }
 ```
 &ensp;&ensp; Writing a class inherits from the page class to complete a page definition, where the constructor has two parameters, ctmobile and ID, where ctmobile represents the entire application instance and ID represents the ID attribute in the page's underlying organization. value.
-&ensp;&ensp; where pageCreate, pageShow, and pageBeforeDestory are page lifecycle functions. For more lifecycle functions, please refer to [page lifecycle] (#9 page lifecycle)
+&ensp;&ensp; where pageCreate, pageShow, and pageBeforeDestory are page lifecycle functions. For more lifecycle functions, please refer to [page lifecycle](#9-page-life-cycle)
 
 **5. Jump to a new page**
 -----------
@@ -301,7 +301,7 @@ Set the ct-data-mode attribute value in the basic structure of the page. The fra
  * result
  &ensp;&ensp; with return value (can bring back the return value to the parent page)
 
- &ensp;&ensp;[See page with return value] (#7-page with return value)
+ &ensp;&ensp;[See page with return value](#7-page-with-return-value)
 
  * singleInstanceResult
  &ensp;&ensp;complete singleton with return value (will not be destroyed, can bring back the return value to the parent page)
