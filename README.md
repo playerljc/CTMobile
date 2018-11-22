@@ -147,7 +147,7 @@ export default class extends CtMobile.Page {
 &ensp; Jumping to a new page can be done in two ways
 * Configuration method
 ```js
-<a ct-pageId="info">跳转到info页面</a>
+<a ct-pageId="info">Jump to the info page</a>
 ```
 &ensp;&ensp; Use the CT-PAGEID property in a tag to jump to a new page, where the value of CT-PAGEID is the value of the ID in the page's underlying organization.
 
@@ -197,8 +197,8 @@ this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 &ensp;&ensp; definition of index.html
 ```js
 <div ct-data-role="page" id="index">
-    <a ct-pageId="PopUpDialog">弹出PopUpDialog</a>
-    <div class="resultText">PopUpDialog的返回值<div>
+    <a ct-pageId="PopUpDialog">Popup PopUpDialog</a>
+    <div class="resultText">The return value of PopUpDialog<div>
 </div>
 ```
 &ensp;&ensp; index.js definition
@@ -312,7 +312,7 @@ Set the ct-data-mode attribute value in the basic structure of the page. The fra
 ---------
 Page 1 has a total of 10 life cycle functions
 
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;![](https://github.com/playerljc/CTMobile/raw/master/outimages/pagelife.png "Page生命周期")
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;![](https://github.com/playerljc/CTMobile/raw/master/outimages/pagelife.png "Page life cycle")
 
 **10. Page transition effect**
 ---------
@@ -488,30 +488,30 @@ Set the ct-data-transition attribute value in the basic structure of the page. T
 | ct-data-rel                    | boolean        | When true, an element with this attribute can be clicked to perform a return operation.           |
 | ct-pageId                      | string               | Used on the <a> tag to represent the id of the page to be loaded                          |
 | ct-parameter                   | string               | Used on the <a> tag to represent the parameters to be passed                            |
-| ct-data-transition             | slideleft            | 从右到左(overlay)                                        |
-|                                | slideright           | 从左到右(overlay)                                        |
-|                                | slideup              | 从下到上(overlay)                                        |
-|                                | slidedown            | 从上到下(overlay)                                        |
-|                                | wxslideleft          | 类似于微信的从右到左                                     |
-|                                | wxslideright         | 类似于微信的从左到右                                     |
-|                                | wxslideup            | 类似于微信的从下到上                                     |
-|                                | wxslidedown          | 类似于微信的从上到下                                     |
-|                                | pushslideleft        | 从右到左(push)                                           |
-|                                | pushslideright       | 从左到右(push)                                           |
-|                                | pushslideup          | 从下到上(push)                                           |
-|                                | pushslidedown        | 从上到下(push)                                           |
-|                                | material(缺省)       | Android Material的风格                                   |
-| ct-data-mode                   | standard(缺省)       | 多例                                                     |
-|                                | single               | 单例(当点击返回时，会销毁)                               |
-|                                | singleInstance       | 完全单例(不会被销毁)                                     |
-|                                | result               | 带有返回值的(可以向父页面带回返回值)                     |
-|                                | singleInstanceResult | 带有返回值的完全单例(不会被销毁，可以向父页面带回返回值) |
-| ct-data-ajax                   | boolean        | 是否交由框架处理a标签的跳转                              |
-| ct-data-preload                | boolean        | 是否提前预加载a标签的href属性的页面                      |
-| ct-reload                      | boolean        | 是否改变window.history.length的数量                      |
-| ct-data-intentfilter-action    | string               | 如果页面要订阅通知时的标识                               |
-| ct-data-intentfilter-categorys | [string1 string2 …]  | 订阅时的过滤参数                                         |
-| ct-data-intentfilter-priority  | number 0(缺省)       | 发送有序广播时的优先级，默认值是0                        |
+| ct-data-transition             | slideleft            | From right to left(overlay)                                        |
+|                                | slideright           | From left to right(overlay)                                        |
+|                                | slideup              | From bottom to top(overlay)                                        |
+|                                | slidedown            | From top to bottom下(overlay)                                        |
+|                                | wxslideleft          | Similar to WeChat from right to left                                     |
+|                                | wxslideright         | Similar to WeChat from left to right                                     |
+|                                | wxslideup            | Similar to WeChat from bottom to top                                     |
+|                                | wxslidedown          | Similar to WeChat from top to bottom                                     |
+|                                | pushslideleft        | From right to left(push)                                           |
+|                                | pushslideright       | From left to right(push)                                           |
+|                                | pushslideup          | From bottom to up(push)                                           |
+|                                | pushslidedown        | From up to bottom(push)                                           |
+|                                | material(default)       | Android Material                                   |
+| ct-data-mode                   | standard(default)       | Multipl                                                     |
+|                                | single               | Singleton (when clicked back, it will be destroyed)                              |
+|                                | singleInstance       | Complete singleton (will not be destroyed)                                     |
+|                                | result               | With a return value (you can bring back the return value to the parent page)                     |
+|                                | singleInstanceResult | A complete singleton with a return value (will not be destroyed, can bring back the return value to the parent page) |
+| ct-data-ajax                   | boolean        | Whether to hand over the jump of the a tag by the framework                              |
+| ct-data-preload                | boolean        | Whether to preload the page of the href attribute of the a tag in advance                      |
+| ct-reload                      | boolean        | Whether to change the number of window.history.length                      |
+| ct-data-intentfilter-action    | string               | If the page is to be subscribed to the notification                               |
+| ct-data-intentfilter-categorys | [string1 string2 …]  | Filter parameters when subscribing                                         |
+| ct-data-intentfilter-priority  | number 0(default)       | Priority when sending an ordered broadcast. The default value is 0.                        |
 
 ## CtMobile App Showcase
 
