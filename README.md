@@ -7,7 +7,7 @@ english | [简体中文](https://github.com/playerljc/CTMobile/blob/master/READM
 ##Three major feelings
 &ensp;&ensp; There are three important thoughts in CtMoble, namely **Page**，**Router**，**BorasdCast**.
 The page is used to manage the entire life cycle of page creation, initialization, and destruction. The router manages the routing jump of this framework. BorassdCast is used to manage the communication interaction between the notification and the data between the pages.
-##Development model
+## Development model
 1. Inline mode
 All pages are written in an HTML (generally not recommended)
 2. ajax mode
