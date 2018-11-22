@@ -2,9 +2,9 @@ english | [简体中文](https://github.com/playerljc/CTMobile/blob/master/READM
 
 ## CtMobile
 &ensp;&ensp; A mobile-side framework that supports multiple forms of page switching, page transitions, page values, notifications, etc., suitable for developing single-page applications (SPA), hybrid development (mixed), and Córdoba development.
-##Development inspiration
+## Development inspiration
 &ensp;&ensp; At the beginning of the hybrid development, the company chose jQueryMobile + Córdoba combination to develop hybrid applications. When using jQueryMobile, I encountered many problems, such as management class and cathedral. The organic combination, the original idea is that if each partial page on the browser side and its management class can be as active as Android, so the inspiration comes, CtMobile's implementation is completely Android. The activity is achieved.
-##Three major feelings
+## Three major feelings
 &ensp;&ensp; There are three important thoughts in CtMoble, namely **Page**，**Router**，**BorasdCast**.
 The page is used to manage the entire life cycle of page creation, initialization, and destruction. The router manages the routing jump of this framework. BorassdCast is used to manage the communication interaction between the notification and the data between the pages.
 ## Development model
