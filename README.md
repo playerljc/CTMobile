@@ -39,14 +39,14 @@ Switch between pages to support multiple effects
 11. pushslideup - from bottom to top (push)
 12. pushslidedown - from top to bottom (push)
 13. material-Android Material style
-##Other functions
+## Other functions
 1. The value between pages
 2. Click event is handled by the framework
 3. ajax content preloading
 4. Does the new page increase the history stack?
 5. Functions can be called through configuration and api
 
-##installation
+## installation
 ``` Celebration
 $ npm install ctmobile --save
 ```
