@@ -54,7 +54,7 @@ $ npm install ctmobile --save
 ## API Documentation
 [docs](https://playerljc.github.io/)
 
-##Quick start
+## Quick start
 
 **1. Basic HTML structure**
 -------
