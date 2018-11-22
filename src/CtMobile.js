@@ -250,7 +250,6 @@ function LinkCapturePromise() {
       ) return;
 
       const ctPageId = target.getAttribute("ct-pageId");
-      console.log(ctPageId);
       const ctParameter = target.getAttribute("ct-parameter") || "";
       if (!ctPageId) {
         return;
@@ -430,10 +429,10 @@ function onReady() {
           const pageRouterConfig = self.config.router[pageId];
           if ((pageRouterConfig && !pageRouterConfig.url)) return;
           const url = (pageRouterConfig && pageRouterConfig.url) ? pageRouterConfig.url : `#${pageId}`;
-
           const parameter = self.getParameterByHash();
+          const searchObj = CtMobileFactory.getUrlParam(`${url}${parameter}`);
 
-          self.startPage(`${url}${parameter}${parameter ? `&pageId=${pageId}` : `?pageId=${pageId}`}`, {
+          self.startPage(`${url}${parameter}${parameter ? (searchObj.pageId ? '' : `&pageId=${pageId}`) : `?pageId=${pageId}`}`, {
             reload: self.config.linkCaptureReload
           });
         }

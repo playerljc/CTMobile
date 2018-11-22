@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
 		super(ctmobile, id);
 	}
 
+  /**
+   * @override
+   */
 	pageCreate() {
 		const $opendialogJO = this.getPageJO().find(" .opendialog");
 		$opendialogJO.on("click", () => {
@@ -19,6 +22,9 @@ export default class extends CtMobile.Page {
 		});
 	}
 
+  /**
+   * @override
+   */
 	pageResult(e, resultCode, bundle) {
 		console.log("resultCode", resultCode, "bundle", JSON.stringify(bundle));
 		alert(`resultCode:${resultCode}\r\nbundle:${JSON.stringify(bundle)}`);

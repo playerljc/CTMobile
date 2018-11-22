@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
 		super(ctmobile, id);
 	}
 
+  /**
+   * @override
+   */
 	pageCreate() {
 		const $pageContentJO = this.getPageJO().find(" .ct-content");
 		const parameter = this.ctmobile.getParameter();

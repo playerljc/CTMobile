@@ -1,0 +1,19 @@
+{
+  "introduction": {
+    "title": "自述"
+  },
+  "config": {
+    "title": "配置"
+  },
+  "tutorial": {
+    "title": "指南",
+    "children": {
+      "install": {
+        "title": "安装"
+      },
+      "quickstart": {
+        "title": "快速开始"
+      }
+    }
+  }
+}

@@ -505,112 +505,124 @@ class Page {
   /**
    * 页面创建调用
    * @callback
+   * @override
    * @param {Object} e
    */
   pageCreate(e) {
-    console.log(Constant._debugger, "pageCreateParentByParent");
+    // console.log(Constant._debugger, "pageCreateParentByParent");
   }
 
   /***
    * 页面显示之前
    * @callback
+   * @override
    * @param {Object} e
    */
   pageBeforeShow(e) {
-    console.log(Constant._debugger, "pageBeforeShowByParent");
+    // console.log(Constant._debugger, "pageBeforeShowByParent");
   }
 
   /***
    * 页面显示
    * @callback
+   * @override
    * @param {Object} e
    */
   pageShow(e) {
-    console.log(Constant._debugger, "pageShowByParent");
+    // console.log(Constant._debugger, "pageShowByParent");
   }
 
   /***
    *  页面显示之后
    * @callback
+   * @override
    * @param {Object} e
    */
   pageAfterShow(e) {
-    console.log(Constant._debugger, "pageAfterShowByParent");
+    // console.log(Constant._debugger, "pageAfterShowByParent");
   }
 
   /***
    * 页面暂停之前
    * @callback
+   * @override
    * @param {Object} e
    */
   pageBeforePause(e) {
-    console.log(Constant._debugger, "pageBeforePauseByParent");
+    // console.log(Constant._debugger, "pageBeforePauseByParent");
   }
 
   /***
    * 页面暂停之后
    * @callback
+   * @override
    * @param {Object} e
    */
   pageAfterPause(e) {
-    console.log(Constant._debugger, "pageAfterPauseByParent");
+    // console.log(Constant._debugger, "pageAfterPauseByParent");
   }
 
   /***
    * 页面恢复之前
    * @callback
+   * @override
    * @param {Object} e
    */
   pageBeforeRestore(e) {
-    console.log(Constant._debugger, "pageBeforeRestoreByParent");
+    // console.log(Constant._debugger, "pageBeforeRestoreByParent");
   }
 
   /***
    * 页面恢复
    * @callback
+   * @override
    * @param {Object} e
    */
   pageRestore(e) {
-    console.log(Constant._debugger, "pageRestoreByParent");
+    // console.log(Constant._debugger, "pageRestoreByParent");
   }
 
   /***
    * 页面恢复之后
    * @callback
+   * @override
    * @param {Object} e
    */
   pageAfterRestore(e) {
-    console.log(Constant._debugger, "pageAfterRestoreByParent");
+    // console.log(Constant._debugger, "pageAfterRestoreByParent");
   }
 
   /***
    * 页面DOM销毁之前
    * @callback
+   * @override
    * @param {Object} e
    */
   pageBeforeDestroy(e) {
-    console.log(Constant._debugger, "pageBeforeDestroyByParent");
+    // console.log(Constant._debugger, "pageBeforeDestroyByParent");
   }
 
   /***
    * pageResult
    * @callback
+   * @override
    * @param {Object} e - jQuery的event
    * @param {string} resultCode - 返回的code
    * @param {Object} bundle - 返回的参数
    */
   pageResult(e, resultCode, bundle) {
-    console.log(Constant._debugger, "pageResult");
+    // console.log(Constant._debugger, "pageResult");
   }
 
   /***
    * 如果添加了ct-data-intentfilter-action属性，满足条件后触发
    * @callback
+   * @override
    * @param {Object} bundle
    * @param {Object} functions
    */
   pageReceiver(bundle, functions) {
-    console.log(Constant._debugger, "pageReceiver");
+    // console.log(Constant._debugger, "pageReceiver");
   }
 
   /**

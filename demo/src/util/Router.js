@@ -75,7 +75,8 @@ export default {
     url: "/static/html/startmode.html",
   },
   startmode_standard: {
-    url: "/static/html/startmode_standard.html"
+    url: "/static/html/startmode_standard.html",
+    component: import(/* webpackChunkName: "startmode" */ "../pages/startmode/startmode_standard"),
   },
   startmode_single: {
     url: "/static/html/startmode_single.html"

@@ -13,6 +13,9 @@ export default class extends CtMobile.Page {
     nextOpt.next();
   }
 
+  /**
+   * @override
+   */
   pageCreate() {
     this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
 

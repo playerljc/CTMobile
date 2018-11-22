@@ -8,6 +8,9 @@ export default class extends CtMobile.Page {
     alert(JSON.stringify(intent));
   }
 
+  /**
+   * @override
+   */
   pageCreate() {
     this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
 

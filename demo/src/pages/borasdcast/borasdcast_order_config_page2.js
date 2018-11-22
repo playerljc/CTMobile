@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
     super(ctmobile, id);
   }
 
+  /**
+   * @override
+   */
   pageReceiver(intent, nextOpt) {
     alert(JSON.stringify(intent));
     nextOpt.putExtras({
@@ -13,6 +16,9 @@ export default class extends CtMobile.Page {
     nextOpt.next();
   }
 
+  /**
+   * @override
+   */
   pageCreate() {
     this.getPageJO().find(' .trigger').on('click', () => {
       this.ctmobile.sendOrderedBroadcast({

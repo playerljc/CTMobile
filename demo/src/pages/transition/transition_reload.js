@@ -5,6 +5,9 @@ export default class extends CtMobile.Page {
 		super(ctmobile, id);
 	}
 
+  /**
+   * @override
+   */
 	pageCreate() {
 		const $backJO = this.getPageJO().find(" .goto");
 		$backJO.on("click", () => {

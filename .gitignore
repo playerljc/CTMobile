@@ -4,8 +4,6 @@ node_modules
 
 dist
 
-lib
-
 #package-webpack.json
 
 #webpack.config.js
@@ -38,3 +36,5 @@ npm-debug
 .zip
 
 .vscode
+
+demo/src/ctmobile
