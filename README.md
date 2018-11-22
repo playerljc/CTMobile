@@ -5,7 +5,7 @@ english | [简体中文](https://github.com/playerljc/CTMobile/blob/master/READM
 ##Development inspiration
 &ensp;&ensp; At the beginning of the hybrid development, the company chose jQueryMobile + Córdoba combination to develop hybrid applications. When using jQueryMobile, I encountered many problems, such as management class and cathedral. The organic combination, the original idea is that if each partial page on the browser side and its management class can be as active as Android, so the inspiration comes, CtMobile's implementation is completely Android. The activity is achieved.
 ##Three major feelings
-&ensp;&ensp; There are three important thoughts in CtMoble, namely ** ** page, ** ** router, ** ** BorasdCast.
+&ensp;&ensp; There are three important thoughts in CtMoble, namely **Page**，**Router**，**BorasdCast**.
 The page is used to manage the entire life cycle of page creation, initialization, and destruction. The router manages the routing jump of this framework. BorassdCast is used to manage the communication interaction between the notification and the data between the pages.
 ##Development model
 1. Inline mode
@@ -52,44 +52,44 @@ $ npm install ctmobile --save
 ```
 
 ## API Documentation
-[documentation] (https://playerljc.github.io/)
+[docs](https://playerljc.github.io/)
 
 ##Quick start
 
 **1. Basic HTML structure**
 -------
 
-```HTML
-<div ct-data-role = "page" id = "index" > </ div>
+```html
+<div ct-data-role="page" id="index"></div>
 ```
 &ensp;&ensp;The element with ct-data-role = "page" attribute represents a basic page, and the id attribute uniquely identifies this page. It should be noted that the element with ct-data-role = "page" attribute must be the body. Child element, can not be an element of any level. Also note that the HTML contains at least one page structure to represent the first displayed page content.
 
 **2. Initialize the application**
 --------
 
-```JS
-Import CtMobile from "ctmobile";
-Const Router = {
-Index:{
-Url: "/ static / html / index.html",
-Component:import(/ * webpackChunkName: "index"* /"../pages/index"),
-},
-Information: {
-Url: "/ static / html / info.html",
-Component:import(/ * webpackChunkName: "info"* /"../pages/info"),
-},
-About: {
-Url: "/ static/html/about.html",
-Component:import(/ * webpackChunkName: "about"* /"../pages/about"),
-},
+```js
+import CtMobile from "ctmobile";
+const Router = {
+    index: {
+      url: "/static/html/index.html",
+      component: import(/* webpackChunkName: "index" */ "../pages/index"),
+    },
+    info: {
+      url: "/static/html/info.html",
+      component: import(/* webpackChunkName: "info" */ "../pages/info"),
+    },
+    about: {
+      url: "/static/html/about.html",
+      component: import(/* webpackChunkName: "about" */ "../pages/about"),
+    },
 };
-Const App = CtMobile.CtMobileFactory.create({
-supportCordova: false,
-linkCaptureReload:false,
-Router: router,
+const App = CtMobile.CtMobileFactory.create({
+    supportCordova: false,
+    linkCaptureReload: false,
+    router: Router,
 });
 ```
-&ensp; For detailed parameter explanation, please refer to [Property Configuration] (#Property Configuration).
+&ensp; For detailed parameter explanation, please refer to [Property Configuration](#Property Configuration).
 
 **3. router**
 -----
@@ -101,43 +101,42 @@ Represents the address of the HTML fragment referenced by this page. The fragmen
 * Components
 Returns a non-polar object representing the logical processing class of this page. The object returned in the promise should be a subclass of the inherited web class.
 When using a WebPack for development, it can be defined as
-```JS
-Component:import(/ * webpackChunkName: "about"* /"../pages/about")
+```js
+  component: import(/* webpackChunkName: "about" */ "../pages/about")
 ```
 The component properties can be left unset. If the component properties are not set, the framework will consider that the URL loaded page is only displayed and not logically processed.
-
 
 **4. Write the page corresponding to the page**
 --------------
 
-```JS
-Import CtMobile from 'ctmobile';
+```js
+import CtMobile from 'ctmobile';
 
-Export default class extends CtMobile.Page {
-Constructor (ctmobile, id){
-Super (ctmobile, id);
-}
-
-/ **
-* @override
-* /
-pageCreate(){
-Console.log('page initialization');
-}
-
-/ **
-* @override
-* /
-pageShow(){
-Console.log (when the page's DOM is displayed, ');
-}
-
-/ **
-* @override
-* /
-pageBeforeDestory(){
-The console.log (called before the page's DOM is destroyed));
-}
+export default class extends CtMobile.Page {
+    constructor(ctmobile, id) {
+      super(ctmobile, id);
+    }
+    
+    /**
+     * @override
+     */
+    pageCreate(){
+        console.log('pageCreate');
+    }
+    
+    /**
+     * @override
+     */
+    pageShow() {
+      console.log('pageShow');
+    }
+    
+    /**
+     * @override
+     */
+    pageBeforeDestory(){
+      console.log('pageBeforeDestory');
+    }
 }
 ```
 &ensp;&ensp; Writing a class inherits from the page class to complete a page definition, where the constructor has two parameters, ctmobile and ID, where ctmobile represents the entire application instance and ID represents the ID attribute in the page's underlying organization. value.
@@ -147,15 +146,15 @@ The console.log (called before the page's DOM is destroyed));
 -----------
 &ensp; Jumping to a new page can be done in two ways
 * Configuration method
-```JS
-<a ct-pageId="info">Go to the information page</a>
+```js
+<a ct-pageId="info">跳转到info页面</a>
 ```
 &ensp;&ensp; Use the CT-PAGEID property in a tag to jump to a new page, where the value of CT-PAGEID is the value of the ID in the page's underlying organization.
 
 * api mode
 Use the App.startPage method to jump to a new page, where the application object is the return value after initializing the application. If it is in the page class, it can be obtained by the this.getCtMobile() method.
-```JS
-. this.getCtMobile()STARTPAGE("/static/html/in info.html PAGEID=info?");
+```js
+this.getCtMobile().startPage("/static/html/info.html?pageId=info");
 ```
 &ensp;&ensp; It should be noted that there will be a PAGEID parameter after the HTML path, and the parameter value is the value of the id in the basic structure of the page.
 
@@ -163,30 +162,30 @@ Use the App.startPage method to jump to a new page, where the application object
 ---------
 * string mode
 * Use the ct-parameter attribute
-```JS
-<a ct-pageId="about" ct-parameter="&a=1&b=2"> </a>
+```js
+  <a ct-pageId="about" ct-parameter="&a=1&b=2"></a>
 ```
 * Use api mode
-```JS
-. this.getCtMobile()STARTPAGE("/static/html/in info.html PAGEID=info & one = 1&B = 2?");
+```js
+  this.getCtMobile().startPage("/static/html/info.html?pageId=info&a=1&b=2");
 ```
 * Memory mode
 &ensp;&ensp; By calling the page class's setRequest method for parameter passing, calling the page class's call getRequest method on the target page to get the parameters, the advantage of using the memory method is that you can pass any data type data between pages, the disadvantage is if Refreshing this page directly will not save the last data, unlike the string method, you can permanently retain the value of the parameter.
 
-A.js
-```JS
-<! - Pass parameters to B.html ->
-this.setRequest( 'requestCode', {a:1,B:2});
-this.ctmobile.startPage( "/static / HTML / b.html PAGEID = B?");
-```
-B.js
-```JS
-pageAfterShow(){
-<! - Get the parameters passed in A.html ->
-Const parameter = JSON.stringify(this.getRequest());
-Console.log( 'parameter', parameter);
-}
-```
+    A.js
+    ```js
+       <!-- Pass parameters to B.html -->
+       this.setRequest('requestCode',{a:1,b:2});
+       this.ctmobile.startPage("/static/html/b.html?pageId=b");
+    ```
+    B.js
+    ```js
+    pageAfterShow() {
+       <!-- Get the parameters passed by A.html -->
+       const parameter = JSON.stringify(this.getRequest());
+       console.log('parameter',parameter);
+    }
+    ```
 &ensp;&ensp; Note that you need to call the getRequest method in the pageAfterShow callback, as long as the pageAfterShow function is called, and then call the getRequest method anywhere to get the parameters.
 
 **7. Page with return value**
@@ -196,30 +195,30 @@ Console.log( 'parameter', parameter);
 &ensp;&ensp; For example, there are currently two pages of index.html, PopUpDialog.html two pages. There is an eject button in index.html, click on the button to pop up PopUpDialog, this PopUpDialog page
 
 &ensp;&ensp; definition of index.html
-```JS
-<div ct-data-role = "page" id = "index" >
-    <a ct-pageId="PopUpDialog"> Popup PopUpDialog </a>
-    <div class = "resultText"> The return value of PopUpDialog <div>
+```js
+<div ct-data-role="page" id="index">
+    <a ct-pageId="PopUpDialog">弹出PopUpDialog</a>
+    <div class="resultText">PopUpDialog的返回值<div>
 </div>
 ```
 &ensp;&ensp; index.js definition
-```JS
-Import CtMobile from 'ctmobile';
-Import $ from 'jquery';
+```js
+import CtMobile from 'ctmobile';
+import $ from 'jquery';
 export default class extends CtMobile.Page{
   constructor(ctmobile,id){
     super(ctmobile,id);
   }
-
+  
   /**
    * override
    */
   pageCreate() {
-
+    
   }
-
+  
   /**
-   * PopUpDialog Trigger on return
+   * PopUpDialogTrigger on return
    * override
    */
   pageResult(e, resultCode, bundle) {
@@ -244,24 +243,24 @@ export default class extends CtMobile.Page{
 
 &ensp;&ensp;PopUpDialog.js definition
 ```js
-Import CtMobile from 'ctmobile';
-Import $ from 'jquery';
+import CtMobile from 'ctmobile';
+import $ from 'jquery';
 
-Export default class extends CtMobile.Page {
-   Constructor(ctmobile,id){
-     Super(ctmobile,id);
-   }
-
-   /**
-    * override
-    */
-   pageCreate() {
-     Const $btnEL = this.getPageJO().find(' .result');
-     $btnEl.on('click' , () => {
-        this.setResult('PopUpDialog', {a: 1, b: 2});
-        This.over();
-     });
-   }
+export default class extends CtMobile.Page {
+  constructor(ctmobile,id){
+    super(ctmobile,id);
+  }
+  
+  /**
+   * override
+   */
+  pageCreate() {
+    const $btnEL = this.getPageJO().find(' .result');
+    $btnEl.on('click' , () => {
+       this.setResult('PopUpDialog', {a: 1, b: 2});
+       this.over();
+    });
+  }
 }
 ```
 &ensp;&ensp;index.html What needs to be done is to rewrite the pageResult method in index.js. This method is triggered after PopUpDialog returns or manually calls the finish method. The pageResult has three parameters e, resultCode, bundle, where resultCode is used. Differentiating between different sources, the bundle is the value that is brought back.
@@ -337,80 +336,80 @@ Set the ct-data-transition attribute value in the basic structure of the page. T
 ---------
 &ensp;&ensp; draws on the concept of Borsdcast in Android, provides a series of functions for data transfer between Pages, broadcast is divided into ordered and unordered, can be broadcast through configuration and api.
 
- * Register by configuration
-   Register the ct-data-intentfilter-action and ct-data-intentfilter-categorys attributes in the basic organization.
+ * Register by configuration
+   Register the ct-data-intentfilter-action and ct-data-intentfilter-categorys attributes in the basic organization.
    ```html
-   <div ct-page-role="page"
-    Id="index"
-    Ct-data-intentfilter-action="actionCode"
-    Ct-data-intentfilter-categorys="c1,c2"
-    Ct-data-intentfilter-priority="0"
+   <div ct-page-role="page" 
+    id="index" 
+    ct-data-intentfilter-action="actionCode"
+    ct-data-intentfilter-categorys="c1,c2"
+    ct-data-intentfilter-priority="0"
    ></div>
    ```
    Page rewriting pageReceiver method
    ```js
-   Import CtMobile from 'ctmobile';
-   Export default class extends CtMobile.Page {
-    Constructor(ctmobile,id){
-        Super(ctmobile,id);
-    }
-
+   import CtMobile from 'ctmobile';
+   export default class extends CtMobile.Page {
+      constructor(ctmobile,id){
+        super(ctmobile,id);
+      }
+      
       /**
        * @override
        */
-       pageReceiver(intent) {
-         Console.log(intent);
-       }
-   }
+      pageReceiver(intent) {
+        console.log(intent);
+      }
+   } 
    ```
  * Register via api
    ```js
-   Import CtMobile from 'ctmobile';
-   Export default class extends CtMobile.Page {
-    Constructor(ctmobile,id){
-        Super(ctmobile,id);
-    }
-
-    onRegisterReceiver(intent) {
-        Console.log(JSON.stringify(intent));
-    }
-
-    /**
-      * @override
-     */
+   import CtMobile from 'ctmobile';
+   export default class extends CtMobile.Page {
+     constructor(ctmobile,id){
+       super(ctmobile,id);
+     }
+     
+     onRegisterReceiver(intent) {
+        console.log(JSON.stringify(intent));
+     }
+  
+     /**
+       * @override
+       */
      pageCreate() {
-        this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
+       this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
 
-     // Register for borasdcast
-     this.ctmobile.registerReceiver({
-         Action: 'actionCode',
-         Priority: 0,
-         Categorys: ['c1','c2']
-     }, this.onRegisterReceiver);
-    }
+       // register borasdcast
+       this.ctmobile.registerReceiver({
+         action: 'actionCode',
+         priority: 0,
+         categorys: ['c1','c2']
+       }, this.onRegisterReceiver);
+     }
    }
    ```
  * Send an unordered broadcast
  Call CtMobile's sendBroadcast method in the Page class
  ```js
  this.ctmobile.sendBroadcast({
-    Action: 'actionCode',
-    Categorys: ['c1','c2'],
-    Bundle: {
-     a: 1,
-     b: 2
+    action: 'actionCode',
+    categorys: ['c1','c2'],
+    bundle: {
+      a: 1,
+      b: 2
     }
  });
  ```
  * Send an orderly broadcast
  Call CtMobile's sendOrderedBroadcast method in the Page class
  ```js
-this.ctmobile.sendOrderedBroadcast({
-    Action: 'actionCode',
-    Categorys: ['c1','c2'],
-    Bundle: {
-     a: 1,
-     b: 2
+ this.ctmobile.sendOrderedBroadcast({
+    action: 'actionCode',
+    categorys: ['c1','c2'],
+    bundle: {
+      a: 1,
+      b: 2
     }
  });
  ```
