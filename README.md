@@ -1,223 +1,225 @@
-## CtMobile
-&ensp;&ensp;一个移动端框架，支持页面的多种形式切换，页面转场，页面传值，通知等，适用于开发单页面应用(SPA)，混合开发(Hybrid)，Cordova开发。
-## 开发灵感
-&ensp;&ensp;期初刚接触Hybrid开发的时候公司选用的是jQueryMobile+Cordova的组合来开发混合应用，在用jQueryMobile的时候遇到了很多问题如管理类和Dom之间总是不能很好的有机结合在一起，当初的想法是如果在浏览器端每个局部页面和其管理类能像Android中的Activity一样就好了，所以灵感就来了，CtMobile的实现完全借助于Android中的Activity来实现。
-## 三大感念
-&ensp;&ensp;CtMoble中有三个重要的感念，分别是**Page**，**Router**，**BorasdCast**.
-其中Page用来管理页面的创建，初始化，销毁的整个生命周期，Router管理这个框架的路由跳转，BorasdCast用来管理通知和页面之间的数据的通信交互。 
-## 开发模式
- 1. inline模式
- 所有的页面都写在一个html中(一般不推荐使用)
- 2. ajax模式
- 每个页面在需要的时候才进行加载，且只加载一次
-## Page(页面)的启动模式
- 1. standard
- 多例模式
- 2. single
- 单例模式(当点击返回时会销毁)
- 3. singleInstance
- 完全的单例模式(在任何时候都不会被销毁)
- 4. result
- 带有返回值的(可以向父页面带回返回值)
- 5. singleInstanceResult
- 带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
-## Page(页面)的转场效果
- 页面之间切换支持多种过度效果
- 
- 1. slideleft-从右到左(overlay)
- 2. slideright-从左到右(overlay)
- 3. slideup-从下到上(overlay)
- 4. slidedown-从上到下(overlay)
- 5. wxslideleft-类似于微信的从右到左
- 6. wxslideright-类似于微信的从左到右
- 7. wxslideup-类似于微信的从下到上
- 8. wxslidedown-类似于微信的从上到下
- 9. pushslideleft-从右到左(push)
- 10. pushslideright-从左到右(push)
- 11. pushslideup-从下到上(push)
- 12. pushslidedown-从上到下(push)
- 13. material-Android Material的风格
-##  其他功能
- 1. 页面之间的传值
- 2. 点击事件是否交由框架处理
- 3. ajax内容预加载
- 4. 新增页面是否增加历史栈
- 5. 功能可以通过配置和api两种方式进行调用
+english | [简体中文](https://github.com/playerljc/CTMobile/README_zh-CN.md "简体中文")
 
-##  安装
-```bash
+## CtMobile
+&ensp;&ensp; A mobile-side framework that supports multiple forms of page switching, page transitions, page values, notifications, etc., suitable for developing single-page applications (SPA), hybrid development (mixed), and Córdoba development.
+##Development inspiration
+&ensp;&ensp; At the beginning of the hybrid development, the company chose jQueryMobile + Córdoba combination to develop hybrid applications. When using jQueryMobile, I encountered many problems, such as management class and cathedral. The organic combination, the original idea is that if each partial page on the browser side and its management class can be as active as Android, so the inspiration comes, CtMobile's implementation is completely Android. The activity is achieved.
+##Three major feelings
+&ensp;&ensp; There are three important thoughts in CtMoble, namely ** ** page, ** ** router, ** ** BorasdCast.
+The page is used to manage the entire life cycle of page creation, initialization, and destruction. The router manages the routing jump of this framework. BorassdCast is used to manage the communication interaction between the notification and the data between the pages.
+##Development model
+1. Inline mode
+All pages are written in an HTML (generally not recommended)
+2. ajax mode
+Each page is loaded when needed and only loaded once
+## Page (page) startup mode
+1. Standard
+Multiple case mode
+2. Single
+Singleton mode (destroyed when clicked back)
+3. singleInstance
+Complete singleton mode (will not be destroyed at any time)
+4. Result
+With a return value (can bring back the return value to the parent page)
+5. singleInstanceResult
+A complete singleton with a return value (will not be destroyed, can bring back the return value to the parent page)
+## Page (page) transition effect
+Switch between pages to support multiple effects
+
+1. slideleft-from right to left (overlay)
+2. slideright - from left to right (overlay)
+3. slideup - from bottom to top (overlay)
+4. slidedown - from top to bottom (overlay)
+5. wxslideleft - similar to WeChat from right to left
+6. wxslideright - similar to WeChat from left to right
+7. wxslideup - similar to WeChat from bottom to top
+8. wxslidedown - similar to WeChat from top to bottom
+9. pushslideleft - from right to left (push)
+10. pushslideright - from left to right (push)
+11. pushslideup - from bottom to top (push)
+12. pushslidedown - from top to bottom (push)
+13. material-Android Material style
+##Other functions
+1. The value between pages
+2. Click event is handled by the framework
+3. ajax content preloading
+4. Does the new page increase the history stack?
+5. Functions can be called through configuration and api
+
+##installation
+``` Celebration
 $ npm install ctmobile --save
 ```
 
-##  API文档
-[docs](https://playerljc.github.io/)
+## API Documentation
+[documentation] (https://playerljc.github.io/)
 
-## 快速开始
+##Quick start
 
-**1. 基本的html结构**
+**1. Basic HTML structure**
 -------
 
-```html
-<div ct-data-role="page" id="index"></div>
+```HTML
+<div ct-data-role = "page" id = "index" > </ div>
 ```
-&ensp;&ensp;具有ct-data-role="page"属性的元素代表一个基本的页面, id属性唯一标识这个页面，需要注意的是具有ct-data-role="page"属性的元素必须为body的子元素，不能是任意级别的元素。还需要注意的是html中至少含有一个Page的结构来代表第一个显示的页面内容
+&ensp;&ensp;The element with ct-data-role = "page" attribute represents a basic page, and the id attribute uniquely identifies this page. It should be noted that the element with ct-data-role = "page" attribute must be the body. Child element, can not be an element of any level. Also note that the HTML contains at least one page structure to represent the first displayed page content.
 
-**2. 初始化应用**
+**2. Initialize the application**
 --------
 
-```js
-import CtMobile from "ctmobile";
-const Router = {
-    index: {
-      url: "/static/html/index.html",
-      component: import(/* webpackChunkName: "index" */ "../pages/index"),
-    },
-    info: {
-      url: "/static/html/info.html",
-      component: import(/* webpackChunkName: "info" */ "../pages/info"),
-    },
-    about: {
-      url: "/static/html/about.html",
-      component: import(/* webpackChunkName: "about" */ "../pages/about"),
-    },
+```JS
+Import CtMobile from "ctmobile";
+Const Router = {
+Index:{
+Url: "/ static / html / index.html",
+Component:import(/ * webpackChunkName: "index"* /"../pages/index"),
+},
+Information: {
+Url: "/ static / html / info.html",
+Component:import(/ * webpackChunkName: "info"* /"../pages/info"),
+},
+About: {
+Url: "/ static/html/about.html",
+Component:import(/ * webpackChunkName: "about"* /"../pages/about"),
+},
 };
-const App = CtMobile.CtMobileFactory.create({
-    supportCordova: false,
-    linkCaptureReload: false,
-    router: Router,
+Const App = CtMobile.CtMobileFactory.create({
+supportCordova: false,
+linkCaptureReload:false,
+Router: router,
 });
 ```
-&ensp;详细参数解释请参考[属性配置](#属性配置)。
+&ensp; For detailed parameter explanation, please refer to [Property Configuration] (#Property Configuration).
 
-**3. 路由**
+**3. router**
 -----
 
-&ensp;&ensp;在初始化应用的代码中需要配置router选项，router是一个对象，对象的键需要和基本结构中id属性的值保持一致，值为一个对象，有两个属性url和component
+&ensp;&ensp; In the code to initialize the application, you need to configure the router option. The router is an object. The key of the object needs to be consistent with the value of the id attribute in the basic structure. The value is an object, and the URL and component of the two attributes.
 
-* url
-  代表这个页面引用的html片段地址，片段就是一个Page的基本结构
-* component
-  返回一个Promise对象，代表这个页面的逻辑处理类，Promise中返回的对象应该是继承了Page类的一个子类。
-  如用Webpack进行开发的时候可以定义成
-  ```js
-  component: import(/* webpackChunkName: "about" */ "../pages/about")
-  ```
-  component属性可以不进行设置，如果不设置component属性，那么框架会认为url载入的页面只进行显示，不进行逻辑处理。
-  
+* URL
+Represents the address of the HTML fragment referenced by this page. The fragment is the basic structure of a page.
+* Components
+Returns a non-polar object representing the logical processing class of this page. The object returned in the promise should be a subclass of the inherited web class.
+When using a WebPack for development, it can be defined as
+```JS
+Component:import(/ * webpackChunkName: "about"* /"../pages/about")
+```
+The component properties can be left unset. If the component properties are not set, the framework will consider that the URL loaded page is only displayed and not logically processed.
 
-**4. 编写页面对应的Page**
+
+**4. Write the page corresponding to the page**
 --------------
 
-```js
-import CtMobile from 'ctmobile';
+```JS
+Import CtMobile from 'ctmobile';
 
-export default class extends CtMobile.Page {
-    constructor(ctmobile, id) {
-      super(ctmobile, id);
-    }
-    
-    /**
-     * @override
-     */
-    pageCreate(){
-        console.log('页面初始化');
-    }
-    
-    /**
-     * @override
-     */
-    pageShow() {
-      console.log('page的DOM显示时调用');
-    }
-    
-    /**
-     * @override
-     */
-    pageBeforeDestory(){
-      console.log('page的DOM销毁之前调用');
-    }
+Export default class extends CtMobile.Page {
+Constructor (ctmobile, id){
+Super (ctmobile, id);
+}
+
+/ **
+* @override
+* /
+pageCreate(){
+Console.log('page initialization');
+}
+
+/ **
+* @override
+* /
+pageShow(){
+Console.log (when the page's DOM is displayed, ');
+}
+
+/ **
+* @override
+* /
+pageBeforeDestory(){
+The console.log (called before the page's DOM is destroyed));
+}
 }
 ```
-&ensp;&ensp;编写一个类继承自Page类即可完成一个页面的定义，其中构造函数会有两个参数，ctmobile和id，其中ctmobile代表整个App的实例，id代表Page基本机构中的id属性值。
-&ensp;&ensp;其中pageCreate，pageShow和pageBeforeDestory是Page的生命周期函数，更多生命周期函数请参考[Page的生命周期](#9-Page的生命周期)
+&ensp;&ensp; Writing a class inherits from the page class to complete a page definition, where the constructor has two parameters, ctmobile and ID, where ctmobile represents the entire application instance and ID represents the ID attribute in the page's underlying organization. value.
+&ensp;&ensp; where pageCreate, pageShow, and pageBeforeDestory are page lifecycle functions. For more lifecycle functions, please refer to [page lifecycle] (#9 page lifecycle)
 
-**5. 跳转到一个新页面**
+**5. Jump to a new page**
 -----------
-&ensp;跳转到一个新页面可以有两种方式
-* 配置方式
-```js
-<a ct-pageId="info">跳转到info页面</a>
+&ensp; Jumping to a new page can be done in two ways
+* Configuration method
+```JS
+<a ct-pageId="info">Go to the information page</a>
 ```
-&ensp;&ensp;在a标签中使用ct-pageId属性就可以跳转到一个新的页面，其中ct-pageId的值为Page基本机构中id的值。
+&ensp;&ensp; Use the CT-PAGEID property in a tag to jump to a new page, where the value of CT-PAGEID is the value of the ID in the page's underlying organization.
 
-* api方式
-使用App.startPage方法跳转到一个新的页面，其中App对象是初始化应用后的返回值，如果是在Page类中可以通过this.getCtMobile()方法获取
-```js
-this.getCtMobile().startPage("/static/html/info.html?pageId=info");
+* api mode
+Use the App.startPage method to jump to a new page, where the application object is the return value after initializing the application. If it is in the page class, it can be obtained by the this.getCtMobile() method.
+```JS
+. this.getCtMobile()STARTPAGE("/static/html/in info.html PAGEID=info?");
 ```
-&ensp;&ensp;需要注意的是html路径后会有一个pageId的参数，参数值是Page基本结构中id的值
+&ensp;&ensp; It should be noted that there will be a PAGEID parameter after the HTML path, and the parameter value is the value of the id in the basic structure of the page.
 
-**6. 页面间传递参数**
+**6. Passing parameters between pages**
 ---------
-* 字符串方式
-  * 使用ct-parameter属性
-  ```js
-  <a ct-pageId="about" ct-parameter="&a=1&b=2"></a>
-  ```
-  * 使用api方式
-  ```js
-  this.getCtMobile().startPage("/static/html/info.html?pageId=info&a=1&b=2");
-  ```
-* 内存方式
-&ensp;&ensp;通过调用Page类的setRequest方法进行参数传递，在目标页面调用Page类的getRequest方法获取参数，使用内存方式的好处是可以在页面之间传递任何数据类型的数据，缺点是如果直接刷新此页的话不会保存上一回的数据，不像字符串方式可以永久保留参数的值
-  
-   A.js
-   ```js
-   <!-- 向B.html传递参数 -->
-   this.setRequest('requestCode',{a:1,b:2});
-   this.ctmobile.startPage("/static/html/b.html?pageId=b");
-   ```
-   B.js
-   ```js
-   pageAfterShow() {
-       <!-- 获取A.html传递过来的参数 -->
-       const parameter = JSON.stringify(this.getRequest());
-	   console.log('parameter',parameter);
-	}
-   ```
-&ensp;&ensp;需要注意的是需要在pageAfterShow的回调中调用getRequest方法，只要pageAfterShow函数被调用，之后在任何地方在调用getRequest方法都可以获取到参数。
+* string mode
+* Use the ct-parameter attribute
+```JS
+<a ct-pageId="about" ct-parameter="&a=1&b=2"> </a>
+```
+* Use api mode
+```JS
+. this.getCtMobile()STARTPAGE("/static/html/in info.html PAGEID=info & one = 1&B = 2?");
+```
+* Memory mode
+&ensp;&ensp; By calling the page class's setRequest method for parameter passing, calling the page class's call getRequest method on the target page to get the parameters, the advantage of using the memory method is that you can pass any data type data between pages, the disadvantage is if Refreshing this page directly will not save the last data, unlike the string method, you can permanently retain the value of the parameter.
 
-**7. 带有返回值的页面**
+A.js
+```JS
+<! - Pass parameters to B.html ->
+this.setRequest( 'requestCode', {a:1,B:2});
+this.ctmobile.startPage( "/static / HTML / b.html PAGEID = B?");
+```
+B.js
+```JS
+pageAfterShow(){
+<! - Get the parameters passed in A.html ->
+Const parameter = JSON.stringify(this.getRequest());
+Console.log( 'parameter', parameter);
+}
+```
+&ensp;&ensp; Note that you need to call the getRequest method in the pageAfterShow callback, as long as the pageAfterShow function is called, and then call the getRequest method anywhere to get the parameters.
+
+**7. Page with return value**
 ---------
-&ensp;&ensp; 页面的基本结构中加入ct-page-mode="result"或者ct-page-mode="singleInstanceResult"属性
+&ensp;&ensp; Add the CT-page mode to the basic structure of the page = "Result" or CT-page mode = "singleInstanceResult" attribute
 
-&ensp;&ensp;举个例子，当前有两个页面index.html，PopUpDialog.html两个页面。index.html中有个弹出按钮，点击按钮弹出PopUpDialog页面
+&ensp;&ensp; For example, there are currently two pages of index.html, PopUpDialog.html two pages. There is an eject button in index.html, click on the button to pop up PopUpDialog, this PopUpDialog page
 
-&ensp;&ensp;index.html定义
-```js
-<div ct-data-role="page" id="index">
-    <a ct-pageId="PopUpDialog">弹出PopUpDialog</a>
-    <div class="resultText">PopUpDialog的返回值<div>
+&ensp;&ensp; definition of index.html
+```JS
+<div ct-data-role = "page" id = "index" >
+    <a ct-pageId="PopUpDialog"> Popup PopUpDialog </a>
+    <div class = "resultText"> The return value of PopUpDialog <div>
 </div>
 ```
-&ensp;&ensp;index.js定义
-```js
-import CtMobile from 'ctmobile';
-import $ from 'jquery';
+&ensp;&ensp; index.js definition
+```JS
+Import CtMobile from 'ctmobile';
+Import $ from 'jquery';
 export default class extends CtMobile.Page{
   constructor(ctmobile,id){
     super(ctmobile,id);
   }
-  
+
   /**
    * override
    */
   pageCreate() {
-    
+
   }
-  
+
   /**
-   * PopUpDialog返回时触发
+   * PopUpDialog Trigger on return
    * override
    */
   pageResult(e, resultCode, bundle) {
@@ -227,236 +229,236 @@ export default class extends CtMobile.Page{
 }
 ```
 
-&ensp;&ensp;PopUpDialog的html定义
+&ensp;&ensp;PopUpDialog html definition
 ```html
 <div ct-data-role="page" id="PopUpDialog" ct-data-mode="result">
-    <button class="result">返回</button>
+     <button class="result">return</button>
 </div>
 ```
-&ensp;&ensp;或者
+&ensp;&ensp; or
 ```html
 <div ct-data-role="page" id="PopUpDialog" ct-data-mode="singleInstanceResult">
-    <button class="result">返回</button>
+     <button class="result">return</button>
 </div>
 ```
 
-&ensp;&ensp;PopUpDialog.js定义
+&ensp;&ensp;PopUpDialog.js definition
 ```js
-import CtMobile from 'ctmobile';
-import $ from 'jquery';
+Import CtMobile from 'ctmobile';
+Import $ from 'jquery';
 
-export default class extends CtMobile.Page {
-  constructor(ctmobile,id){
-    super(ctmobile,id);
-  }
-  
-  /**
-   * override
-   */
-  pageCreate() {
-    const $btnEL = this.getPageJO().find(' .result');
-    $btnEl.on('click' , () => {
-       this.setResult('PopUpDialog', {a: 1, b: 2});
-       this.over();
-    });
-  }
+Export default class extends CtMobile.Page {
+   Constructor(ctmobile,id){
+     Super(ctmobile,id);
+   }
+
+   /**
+    * override
+    */
+   pageCreate() {
+     Const $btnEL = this.getPageJO().find(' .result');
+     $btnEl.on('click' , () => {
+        this.setResult('PopUpDialog', {a: 1, b: 2});
+        This.over();
+     });
+   }
 }
 ```
-&ensp;&ensp;index.html需要做的是在index.js中重写pageResult方法，此方法在PopUpDialog返回或手动调用finish方法后被触发，pageResult的有三个参数e，resultCode，bundle，其中resultCode用来区分不同的来源，bundle是被带回来的值。
-&ensp;&ensp;PopUpDialog.html需要做的是在PopUpDialog.js中调用this.setResult(resultCode,bundle);方法来设置返回的值，在调用this.finish();方法后页面关闭。
+&ensp;&ensp;index.html What needs to be done is to rewrite the pageResult method in index.js. This method is triggered after PopUpDialog returns or manually calls the finish method. The pageResult has three parameters e, resultCode, bundle, where resultCode is used. Differentiating between different sources, the bundle is the value that is brought back.
+&ensp;&ensp;PopUpDialog.html What needs to be done is to call the this.setResult(resultCode,bundle); method in PopUpDialog.js to set the returned value. The page closes after calling this.finish();
 
-带有返回值的页面使用场景一般分为两种
- * 多对一
- a.html,b.html,c.html...都弹出d.html
- * 一对多
- a.html弹出b.html,c.html,d.html...
+The page usage scenarios with return values are generally divided into two types.
+  * Many to one
+  A.html, b.html, c.html... all pop up d.html
+  * One to many
+  A.html popup b.html, c.html, d.html...
 
-在多对一的情况下可以通过setRequest方法把父页面的标志传递过去。
+In the case of many-to-one, the flag of the parent page can be passed through the setRequest method.
 
-在一对多的情况下可以通过pageResult方法的requestCode区分不同来源。
+In the case of one-to-many, different sources can be distinguished by the requestCode of the pageResult method.
 
-**8. Page的启动模式**
+**8. Page startup mode**
 ---------
-在页面的基本结构中设置ct-data-mode属性值即可，框架一共支持5中启动模式
- * standard（默认）
-  &ensp;&ensp;多例模式
+Set the ct-data-mode attribute value in the basic structure of the page. The framework supports a total of 5 startup modes.
+ * standard (default)
+  &ensp;&ensp;multiple case mode
 
-  &ensp;&ensp;多例模式就是通过配置或者api跳转到此页面的时候都会建立一个新的实例，所谓新的实例就是Dom和Dom对应的Page类都会是新的。
-  
+  &ensp;&ensp;Multiple patterns are created by configuration or api to jump to this page will create a new instance, the so-called new instance is the Dom and Dom corresponding Page class will be new.
+
  * single
-  &ensp;&ensp;单例模式(当点击返回时会销毁)
+ &ensp;&ensp; singleton mode (destroyed when clicked back)
 
-  &ensp;&ensp;和Android中single一样,举个例子，加入有如下的页面开发顺序 :
-  index.html -> a.html -> b.html -> c.html -> d.html -> b.html
-  如果把b.html的ct-data-mode设置为single，那么执行上述页面顺序后，   历史栈中当前是 index.html -> a.html -> b.html 
-  也是删除了c.html和d.html，删除的同事也会调用相应的生命周期函数。
-  但是如果在b.html中点击返回那么b.html还是会销毁的。
-  
+ &ensp;&ensp; Same as Single in Android, for example, add the following page development order:
+ Index.html -> a.html -> b.html -> c.html -> d.html -> b.html
+ If b.html's ct-data-mode is set to single, then after executing the above page order, the history stack is currently index.html -> a.html -> b.html
+ Also deleted c.html and d.html, deleted colleagues will also call the corresponding life cycle function.
+ But if you click back in b.html then b.html will still be destroyed.
+
  * singleInstance
-  &ensp;&ensp;完全的单例模式(在任何时候都不会被销毁)
+ &ensp;&ensp;complete singleton mode (will not be destroyed at any time)
 
-  &ensp;&ensp;完全单例就是在任何时候都不会被销毁且只有一个实例存在。
-  
+ &ensp;&ensp; A complete singleton is never destroyed at all times and only one instance exists.
+
  * result
-  &ensp;&ensp;带有返回值的(可以向父页面带回返回值)
+ &ensp;&ensp; with return value (can bring back the return value to the parent page)
 
-  &ensp;&ensp;[参见带有返回值的页面](#7-带有返回值的页面)
-  
+ &ensp;&ensp;[See page with return value] (#7-page with return value)
+
  * singleInstanceResult
-  &ensp;&ensp;带有返回值的完全单例(不会被销毁，可以向父页面带回返回值)
+ &ensp;&ensp;complete singleton with return value (will not be destroyed, can bring back the return value to the parent page)
 
-  &ensp;&ensp;和result一样只是实例不会被销毁。
+ &ensp;&ensp; is just like result, but the instance will not be destroyed.
 
-**9. Page的生命周期**
+**9. Page life cycle**
 ---------
-Page一共有10个生命周期函数
+Page 1 has a total of 10 life cycle functions
 
 &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;![](https://github.com/playerljc/CTMobile/raw/master/outimages/pagelife.png "Page生命周期")
 
-**10. 页面转场效果**
+**10. Page transition effect**
 ---------
-在页面的基本结构中设置ct-data-transition属性值即可，框架一共支持13种页面的过度效果
+Set the ct-data-transition attribute value in the basic structure of the page. The framework supports a total of 13 pages of excessive effects.
 
- * slideleft-从右到左(overlay)
- * slideright-从左到右(overlay)
- * slideup-从下到上(overlay)
- * slidedown-从上到下(overlay)
- * wxslideleft-类似于微信的从右到左
- * wxslideright-类似于微信的从左到右
- * wxslideup-类似于微信的从下到上
- * wxslidedown-类似于微信的从上到下
- * pushslideleft-从右到左(push)
- * pushslideright-从左到右(push)
- * pushslideup-从下到上(push)
- * pushslidedown-从上到下(push)
- * material-Android Material的风格
+  * slideleft - from right to left (overlay)
+  * slideright - from left to right (overlay)
+  * slideup - from bottom to top
+  * slidedown - from top to bottom
+  * wxslideleft - similar to WeChat from right to left
+  * wxslideright - similar to WeChat from left to right
+  * wxslideup - similar to WeChat from bottom to top
+  * wxslidedown - similar to WeChat from top to bottom
+  * pushslideleft - from right to left (push)
+  * pushslideright - from left to right (push)
+  * pushslideup - from bottom to top (push)
+  * pushslidedown - from top to bottom (push)
+  * material-Android Material style
 
-**11. 广播(borasdcast)**
+**11. Broadcast (borasdcast)**
 ---------
-&ensp;&ensp;借鉴了Android中Borasdcast概念，为Page之间的数据传递提供了一系列功能，广播分为有序和无序，可以通过配置和api两种方式实现广播。
+&ensp;&ensp; draws on the concept of Borsdcast in Android, provides a series of functions for data transfer between Pages, broadcast is divided into ordered and unordered, can be broadcast through configuration and api.
 
- * 通过配置注册
-   在基本机构中加入ct-data-intentfilter-action，ct-data-intentfilter-categorys属性进行注册
+ * Register by configuration
+   Register the ct-data-intentfilter-action and ct-data-intentfilter-categorys attributes in the basic organization.
    ```html
-   <div ct-page-role="page" 
-    id="index" 
-    ct-data-intentfilter-action="actionCode"
-    ct-data-intentfilter-categorys="c1,c2"
-    ct-data-intentfilter-priority="0"
+   <div ct-page-role="page"
+    Id="index"
+    Ct-data-intentfilter-action="actionCode"
+    Ct-data-intentfilter-categorys="c1,c2"
+    Ct-data-intentfilter-priority="0"
    ></div>
    ```
-   Page中重写pageReceiver方法
+   Page rewriting pageReceiver method
    ```js
-   import CtMobile from 'ctmobile';
-   export default class extends CtMobile.Page {
-      constructor(ctmobile,id){
-        super(ctmobile,id);
-      }
-      
+   Import CtMobile from 'ctmobile';
+   Export default class extends CtMobile.Page {
+    Constructor(ctmobile,id){
+        Super(ctmobile,id);
+    }
+
       /**
        * @override
        */
-      pageReceiver(intent) {
-        console.log(intent);
-      }
-   } 
-   ```
- * 通过api注册
-   ```js
-   import CtMobile from 'ctmobile';
-   export default class extends CtMobile.Page {
-     constructor(ctmobile,id){
-       super(ctmobile,id);
-     }
-     
-     onRegisterReceiver(intent) {
-        console.log(JSON.stringify(intent));
-     }
-  
-     /**
-       * @override
-       */
-     pageCreate() {
-       this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
-
-       // 注册borasdcast
-       this.ctmobile.registerReceiver({
-         action: 'actionCode',
-         priority: 0,
-         categorys: ['c1','c2']
-       }, this.onRegisterReceiver);
-     }
+       pageReceiver(intent) {
+         Console.log(intent);
+       }
    }
    ```
- * 发送无序广播
- 在Page类中调用CtMobile的sendBroadcast方法
+ * Register via api
+   ```js
+   Import CtMobile from 'ctmobile';
+   Export default class extends CtMobile.Page {
+    Constructor(ctmobile,id){
+        Super(ctmobile,id);
+    }
+
+    onRegisterReceiver(intent) {
+        Console.log(JSON.stringify(intent));
+    }
+
+    /**
+      * @override
+     */
+     pageCreate() {
+        this.onRegisterReceiver = this.onRegisterReceiver.bind(this);
+
+     // Register for borasdcast
+     this.ctmobile.registerReceiver({
+         Action: 'actionCode',
+         Priority: 0,
+         Categorys: ['c1','c2']
+     }, this.onRegisterReceiver);
+    }
+   }
+   ```
+ * Send an unordered broadcast
+ Call CtMobile's sendBroadcast method in the Page class
  ```js
  this.ctmobile.sendBroadcast({
-    action: 'actionCode',
-    categorys: ['c1','c2'],
-    bundle: {
-      a: 1,
-      b: 2
+    Action: 'actionCode',
+    Categorys: ['c1','c2'],
+    Bundle: {
+     a: 1,
+     b: 2
     }
  });
  ```
- * 发送有序广播
- 在Page类中调用CtMobile的sendOrderedBroadcast方法
+ * Send an orderly broadcast
+ Call CtMobile's sendOrderedBroadcast method in the Page class
  ```js
- this.ctmobile.sendOrderedBroadcast({
-    action: 'actionCode',
-    categorys: ['c1','c2'],
-    bundle: {
-      a: 1,
-      b: 2
+this.ctmobile.sendOrderedBroadcast({
+    Action: 'actionCode',
+    Categorys: ['c1','c2'],
+    Bundle: {
+     a: 1,
+     b: 2
     }
  });
  ```
- * 有序广播
-   * 通知的优先级 
-   有序广播的通知是有顺序的，这个顺序是有priority这个属性决定的，priority越大越先被通知到，越小越晚被通知到。
- 使用配置设置priority
+ * Ordered broadcast
+   * Priority of notification
+   Ordered broadcast notifications are ordered. This order is determined by the priority attribute. The larger the priority, the sooner it is notified. The smaller the later, the more notified.
+ Use configuration settings priority
 ```html
-<div ct-page-role="page" 
-    id="index" 
-    ct-data-intentfilter-priority="0"
+<div ct-page-role="page"
+    Id="index"
+    Ct-data-intentfilter-priority="0"
    ></div>
 ```
- 使用api注册设置priority
+ Use api registration to set priority
  ```js
- // 注册borasdcast
+ // Register for borasdcast
  this.ctmobile.registerReceiver({
-    action: 'actionCode',
-    priority: 0,
-    categorys: ['c1','c2']
+    Action: 'actionCode',
+    Priority: 0,
+    Categorys: ['c1','c2']
  }, this.onRegisterReceiver);
  ```
-   * 向后传递参数和终止传递 
-   
-&ensp;&ensp;在有序广播的回调函数中会有2个参数intent和opt，其中intent是通知传递的参数，opt是个对象，其中有2个方法,putExtras和next，其中putExtras设置向下传递的参数，这些参数是合并在一起的。只有调用next方法才向下进行传递。
-  
-   * 通知的分类(categorys)
-   
-&ensp;&ensp;在注册广播的时候除了Action之外，还可以定义多个category，categorys可以认为是一个二级标题，作用是用来对Action进行细粒度的定义。 
-   
-**12. 其他功能**
+  * Pass parameters backwards and terminate delivery
+
+&ensp;&ensp; There are two parameters intent and opt in the callback function of the ordered broadcast, where intent is the parameter passed by the notification, opt is an object, there are 2 methods, putExtras and next, where putExtras is set to pass down Parameters, which are merged together. Only the next method is called to pass down.
+
+   * Classification of notifications (categorys)
+
+&ensp;&ensp; When registering a broadcast, in addition to Action, you can define multiple categories. Category can be considered as a secondary title, which is used to define the action fine-grained.
+
+**12. Other features**
 ---------
- * 是否增加历史
- 如果不想让新跳转的页面增加到历史栈中，可以设置ct-reload属性为true来阻止浏览器增加历史。
+ * Whether to increase history
+ If you don't want to add a new page to the history stack, you can set the ct-reload property to true to prevent the browser from adding history.
  ```html
  <a ct-pageId="a" ct-reload="true">a.html</a>
  ```
  ```js
  this.ctmobile.startPage('/static/html/a.html?pageId=a',{
-    reload:true
+    Reload:true
  });
  ```
- 比如index.html -> a.html，那么历史栈中只有a.html
- 
- * a标签不交由框架处理
- 有些时候我们不希望让框架来处理a标签的行为，此时就可以在a标签上加入ct-data-ajax="false"
+ For example, index.html -> a.html, then only a.html in the history stack
 
- * ajax内容预加载
+ * a label is not handled by the framework
+ Sometimes we don't want the framework to handle the behavior of the a tag, so we can add ct-data-ajax="false" to the a tag.
+
+ * ajax content preloading
  ```html
  <div ct-data-role="page" id="index">
     <a ct-pageId="a" ct-data-preload="true">into a.html</a>
@@ -466,64 +468,64 @@ Page一共有10个生命周期函数
     <a ct-pageId="e" ct-data-preload="true">into e.html</a>
  </div>
  ```
- 框架会在初始化的时候就加载a-e.html的内容
- 如果a-e.html中还有需要预加载的页面，那框架还会进行预加载
- 每个页面只会被预加载一次，如果预加载完了以后就不会在被预加载了。
- 
- * 使用配置进行页面的返回
+ The framework will load the contents of a-e.html at initialization time.
+ If there is a page in a-e.html that needs to be preloaded, the framework will also be preloaded.
+ Each page will only be preloaded once and will not be preloaded if it is preloaded.
+
+ * Use configuration to return the page
  ```html
  <div ct-data-role="page" id="about">
     <header>
-      <a class="ct-back-icon" ct-data-rel="back"></a>
+        <a class="ct-back-icon" ct-data-rel="back"></a>
     </header>
  </div>
  ```
  
-## 属性配置
+ ## Attribute Configuration
 
-| 属性(property)                 | 取值                 | 说明                                                     |
-| ------------------------------ | -------------------- | -------------------------------------------------------- |
-| ct-data-role                   | page                 | 有此属性的元素代表一个页面                               |
-| ct-data-rel                    | boolean        | true的时候带有此属性的元素点击可以执行返回操作           |
-| ct-pageId                      | string               | 用在<a>标签上代表要加载页面的id                          |
-| ct-parameter                   | string               | 用在<a>标签上代表要传递的参数                            |
-| ct-data-transition             | slideleft            | 从右到左(overlay)                                        |
-|                                | slideright           | 从左到右(overlay)                                        |
-|                                | slideup              | 从下到上(overlay)                                        |
-|                                | slidedown            | 从上到下(overlay)                                        |
-|                                | wxslideleft          | 类似于微信的从右到左                                     |
-|                                | wxslideright         | 类似于微信的从左到右                                     |
-|                                | wxslideup            | 类似于微信的从下到上                                     |
-|                                | wxslidedown          | 类似于微信的从上到下                                     |
-|                                | pushslideleft        | 从右到左(push)                                           |
-|                                | pushslideright       | 从左到右(push)                                           |
-|                                | pushslideup          | 从下到上(push)                                           |
-|                                | pushslidedown        | 从上到下(push)                                           |
-|                                | material(缺省)       | Android Material的风格                                   |
-| ct-data-mode                   | standard(缺省)       | 多例                                                     |
-|                                | single               | 单例(当点击返回时，会销毁)                               |
-|                                | singleInstance       | 完全单例(不会被销毁)                                     |
-|                                | result               | 带有返回值的(可以向父页面带回返回值)                     |
-|                                | singleInstanceResult | 带有返回值的完全单例(不会被销毁，可以向父页面带回返回值) |
-| ct-data-ajax                   | boolean        | 是否交由框架处理a标签的跳转                              |
-| ct-data-preload                | boolean        | 是否提前预加载a标签的href属性的页面                      |
-| ct-reload                      | boolean        | 是否改变window.history.length的数量                      |
-| ct-data-intentfilter-action    | string               | 如果页面要订阅通知时的标识                               |
-| ct-data-intentfilter-categorys | [string1 string2 …]  | 订阅时的过滤参数                                         |
-| ct-data-intentfilter-priority  | number 0(缺省)       | 发送有序广播时的优先级，默认值是0                        |
+| property | value | description |
+| ------------------------------ | ------------------ -- | ----------------------------------------------- --------- |
+| ct-data-role | page | Elements with this attribute represent a page |
+| ct-data-rel | true \| false | true when an element with this attribute is clicked to perform a return operation |
+| ct-pageId | string | used on the <a> tag to represent the id of the page to be loaded |
+| ct-parameter | string | used on the <a> tag to represent the parameters to be passed |
+| ct-data-transition | slideleft | from right to left (overlay) |
+| | slideright | From left to right (overlay) |
+| | slideup | From top to top |
+| | slidedown | top to bottom (overlay) |
+| | wxslideleft | Similar to WeChat from right to left |
+| | wxslideright | Similar to WeChat from left to right |
+| | wxslideup | Similar to WeChat from bottom to top |
+| | wxslidedown | Similar to WeChat from top to bottom |
+| | pushslideleft | from right to left (push) |
+| | pushslideright | from left to right (push) |
+| | pushslideup | from bottom to top (push) |
+| | pushslidedown | From top to bottom (push) |
+| | material (default) | Android Material Style |
+| ct-data-mode | standard (default) | Multiple Cases |
+| | single | Singleton (when clicked back, it will be destroyed) |
+| | singleInstance | Complete singleton (will not be destroyed) |
+| | result | with return value (can bring back the return value to the parent page) |
+| | singleInstanceResult | A complete singleton with a return value (will not be destroyed, can bring back the return value to the parent page) |
+| ct-data-ajax | true \| false | Whether to handle the jump of the a tag by the framework |
+| ct-data-preload | true \| false | Whether to preload the page of the href attribute of the a tag in advance |
+| ct-reload | true \| false | Whether to change the number of window.history.length |
+| ct-data-intentfilter-action | string | If the page is to be subscribed to the notification |
+| ct-data-intentfilter-categorys | [string1 string2 ...] | Filter parameters at subscription |
+| ct-data-intentfilter-priority | number 0 (default) | Priority when sending an ordered broadcast, default is 0 |
 
-## CtMobile应用程序展示
+## CtMobile App Showcase
 
-## Demo程序的运行
-&ensp;&ensp;checkou后进入demo目录
+## Demo program running
+&ensp;&ensp;checkou and enter the demo directory
 ```bash
 $ npm install
 $ npm start
 ```
-&ensp;&ensp;在浏览器上输入localhost:8000即可访问到demo的主页面
+&ensp;&ensp; Enter localhost:8000 in the browser to access the main page of the demo
 
-## 讨论群
-![](https://github.com/playerljc/CTMobile/raw/master/outimages/qq.png "讨论群")
+## Discussion Group
+![](https://github.com/playerljc/CTMobile/raw/master/outimages/qq.png "discussion group")
 
-## 许可
+## Licensing
 [MIT](/LICENSE)

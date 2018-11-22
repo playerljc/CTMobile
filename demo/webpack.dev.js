@@ -9,7 +9,7 @@ module.exports = merge(common, {
     publicPath: '/',
     host: 'localhost',
     compress: true,
-    port: 8000,
+    port: 8001,
     clientLogLevel: 'none', //不再输出繁琐的信息
     historyApiFallback: true,
     overlay: true, //浏览器全屏显示错误信息
