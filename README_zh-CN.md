@@ -52,7 +52,7 @@ $ npm install ctmobile --save
 ```
 
 ##  API文档
-[docs](https://playerljc.github.io/)
+[docs](https://playerljc.github.io/ctmobile/index.html)
 
 ## 快速开始
 
