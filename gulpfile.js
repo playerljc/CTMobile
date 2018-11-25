@@ -1,7 +1,6 @@
 var gulp = require('gulp');
-// var concat = require("gulp-concat");
+var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
-
 var clean = require('gulp-clean');
 
 gulp.task('less', function () {
@@ -32,7 +31,7 @@ gulp.task('copy', function () {
     .pipe(gulp.dest('lib'))
 });
 
-gulp.task("minjs", function () {
+gulp.task("garbleuglify", function () {
   return gulp.src([
     'lib/src/*.js'
   ])
@@ -40,8 +39,26 @@ gulp.task("minjs", function () {
     .pipe(gulp.dest("lib"))
 });
 
-gulp.task("clean", ['minjs'], function () {
+gulp.task("garble", ['garbleuglify'], function () {
   gulp.src("lib/src").pipe(clean());
 });
 
-gulp.task('default', ['less', 'copy', 'clean']);
+gulp.task("umd", ['umdparse'], function () {
+  gulp.src("umd/src").pipe(clean());
+});
+
+gulp.task("umdparse", function () {
+  return gulp.src([
+    'umd/src/Constant.js',
+    'umd/src/BorasdCast.js',
+    'umd/src/Router.js',
+    'umd/src/Page.js',
+    'umd/src/CtMobile.js',
+    'umd/src/index.js'
+  ])
+    .pipe(concat("ctmobile.min.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest("umd"))
+});
+
+gulp.task('default', ['less', 'copy', 'garble']);
