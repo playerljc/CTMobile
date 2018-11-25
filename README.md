@@ -47,8 +47,15 @@ Switch between pages to support multiple effects
 5. Functions can be called through configuration and api
 
 ## installation
+
+* npm
 ``` Celebration
 $ npm install ctmobile --save
+```
+
+* unpck
+```html
+<script src="https://unpkg.com/ctmobile@^2/umd/ctmobile.min.js"></script>
 ```
 
 ## API Documentation

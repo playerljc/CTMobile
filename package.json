@@ -1,12 +1,13 @@
 {
   "name": "ctmobile",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "一个移动端框架",
   "main": "lib/index.js",
   "scripts": {
-    "build": "rimraf lib && babel src -d lib/src --ignore __tests__ && gulp",
+    "build": "rimraf lib && babel src -d lib/src --type build && gulp",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "doc": "jsdoc src README.md -d doc -u doc/tutorials"
+    "doc": "jsdoc src README.md -d doc -u doc/tutorials",
+    "umd": "rimraf umd && babel src -d umd/src --type umd && gulp umd"
   },
   "keywords": [
     "CtMobile",
@@ -31,13 +32,15 @@
     "url": "https://github.com/playerljc/CTMobile/issues"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-transform-modules-umd": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/runtime": "^7.1.5",
     "autoprefixer": "^8.5.0",
-    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.8.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",

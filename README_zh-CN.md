@@ -47,8 +47,15 @@
  5. 功能可以通过配置和api两种方式进行调用
 
 ##  安装
+
+* npm
 ```bash
 $ npm install ctmobile --save
+```
+
+* unpck
+```html
+<script src="https://unpkg.com/ctmobile@^2/umd/ctmobile.min.js"></script>
 ```
 
 ##  API文档
