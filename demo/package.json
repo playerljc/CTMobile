@@ -25,6 +25,7 @@
     "copy-webpack-plugin": "^4.5.3",
     "cross-env": "^5.2.0",
     "csv-loader": "^3.0.2",
+    "ctmobile": "^2.0.2",
     "ejs-loader": "^0.3.1",
     "eslint": "^5.8.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -48,7 +49,6 @@
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4",
     "whatwg-fetch": "^3.0.0",
-    "xml-loader": "^1.2.1",
-    "ctmobile":"^2.0.1"
+    "xml-loader": "^1.2.1"
   }
 }
