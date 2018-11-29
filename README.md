@@ -526,6 +526,7 @@ Set the ct-data-transition attribute value in the basic structure of the page. T
 &ensp;&ensp;checkou and enter the demo directory
 ```bash
 $ npm install
+$ npm run devDll
 $ npm start
 ```
 &ensp;&ensp; Enter localhost:8000 in the browser to access the main page of the demo

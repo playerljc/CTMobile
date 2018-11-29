@@ -527,6 +527,7 @@ Page一共有10个生命周期函数
 &ensp;&ensp;checkou后进入demo目录
 ```bash
 $ npm install
+$ npm run devDll
 $ npm start
 ```
 &ensp;&ensp;在浏览器上输入localhost:8000即可访问到demo的主页面
